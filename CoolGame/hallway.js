@@ -22,11 +22,16 @@ boil.hallway.prototype = {
         game.physics.enable(ptag);
         ptag.scale.setTo(-.45,.45);
         ptag.anchor.setTo(0.5);
+        
+        game.camera.follow(ptag);
+        game.camera.deadzone = new Phaser.Rectangle(1000,1000,1000,1000);
+        //game.camera.deadzone.setTo(1000,1000,1000,1000);
         //map.setCollisionBetween(1,25,'hallway');       
         
              
 },
 update: function(){
+     
     if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
         ptag.body.velocity.x=300;
         ptag.animations.play('walk', 20, true);

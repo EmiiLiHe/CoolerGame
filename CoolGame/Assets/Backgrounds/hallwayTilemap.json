@@ -23,11 +23,11 @@
         {
          "columns":15,
          "firstgid":1,
-         "image":"hallway Tileset.png",
+         "image":"hallwayTileset.png",
          "imageheight":3000,
          "imagewidth":1500,
          "margin":0,
-         "name":"hallway Tileset",
+         "name":"hallwayTileset",
          "properties":
             {
 
