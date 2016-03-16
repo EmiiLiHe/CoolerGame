@@ -7,6 +7,7 @@ boil.kitchen.prototype = {
         game.load.tilemap('kitchenTilemap', 'Assets/Backgrounds/kitchenTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('kitchenTileset', 'Assets/Backgrounds/kitchenTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',470,950);
+        game.load.image('counters','Assets/Backgrounds/')
          
     },
     create: function(){
@@ -16,34 +17,30 @@ boil.kitchen.prototype = {
         console.log('You are in the kitchen state');        
         var map = game.add.tilemap('kitchenTilemap');
         map.addTilesetImage('kitchenTileset');
-        bathroom = map.createLayer('kitchen');
-        ptag = game.add.sprite(game.world.centerX-650,game.world.centerY+300, 'ptag');
+        kitchen = map.createLayer('kitchen');
+        ptag = game.add.sprite(game.world.centerX-650,game.world.centerY+380, 'ptag');
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7]);
         game.physics.enable(ptag);
         ptag.scale.setTo(-.45,.45);
         ptag.anchor.setTo(0.5);
         
-//        map.setCollisionBetween(1,30,'bathroom'); //ceiling
-//        map.setCollisionBetween(196,225,'bathroom') //bottom
-//        
-//        map.setCollision(31,46, 'bathroom');
-//        map.setCollision(61,76,'bathroom');
-//        map.setCollision(91,'bathroom'); //left
-//        
-//        map.setCollision(90,106,'bathroom');
-//        
-//        map.setCollision(135,'bathroom');
-//        map.setCollision(150,165,'bathroom');
-//        map.setCollision(180,195,'bathroom');
-//        map.setCollision(210,225,'bathroom');
-//        map.setCollisionBetween(49,50,'bathroom'); //toilet
-//        map.setCollisionBetween(38,39,'bathroom'); //sink
-//        
-//        map.setCollisionBetween(42,45,'bathroom');//bath
-//        map.setCollisionBetween(57,60,'bathroom'); //bath
-//        map.setCollisionBetween(72,75,'bathroom'); //bath
-//        map.setCollisionBetween(87,90,'bathroom'); //bath
-//        map.setCollisionBetween(102,105,'bathroom'); //bath     
+        map.setCollisionBetween(1,30,'kitchen'); //ceiling
+        map.setCollisionBetween(211,225,'kitchen') //bottom
+        
+        map.setCollision(33,48, 'kitchen');
+        map.setCollision(63,78,'kitchen');
+        map.setCollision(93,108,'kitchen');
+        map.setCollisionBetween(121,123, 'kitchen')//left
+        
+        map.setCollisionBetween(187,195,'kitchen');
+        map.setCollisionBetween(172 ,180, 'kitchen');
+        map.setCollisionBetween(157,165,'kitchen');
+        
+        map.setCollision(135,'kitchen');
+        map.setCollision(150,165,'kitchen');
+        map.setCollision(180,195,'kitchen');
+        map.setCollision(210,225,'kitchen');
+   
         
              
 },
@@ -76,8 +73,8 @@ update: function(){
 }
     game.physics.arcade.collide(ptag,kitchen)
     
-//     if (ptag.x< 15){
-//     changeState('kitchen');
-//     };
+     if (ptag.x< 15){
+     changeState('bathroom');
+     };
     }
 };

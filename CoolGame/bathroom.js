@@ -75,7 +75,7 @@ update: function(){
     game.physics.arcade.collide(ptag,bathroom)
     
      if (ptag.x< 15){
-     changeState('hallway');
+     changeState('bedroom');
      };
     }
 };
