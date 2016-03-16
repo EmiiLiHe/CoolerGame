@@ -1,16 +1,16 @@
 boil.kitchen = function(){};
 
-var ptag, kitchen;
+var ptag, kitchen,counters
 
 boil.kitchen.prototype = {
     preload: function(){
         game.load.tilemap('kitchenTilemap', 'Assets/Backgrounds/kitchenTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('kitchenTileset', 'Assets/Backgrounds/kitchenTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',470,950);
-        game.load.image('counters','Assets/Backgrounds/')
+        game.load.image('counters','Assets/Backgrounds/counters.png',1500,1500);
          
     },
-    create: function(){
+create: function(){
         game.physics.startSystem(Phaser.Physics.ARCADE);
         //game.world.setBounds(0,0, 1500,1500);
         //game.stage.backgroundColor = '#A80000';
@@ -23,6 +23,7 @@ boil.kitchen.prototype = {
         game.physics.enable(ptag);
         ptag.scale.setTo(-.45,.45);
         ptag.anchor.setTo(0.5);
+        game.add.sprite(0,0,'counters');
         
         map.setCollisionBetween(1,30,'kitchen'); //ceiling
         map.setCollisionBetween(211,225,'kitchen') //bottom
@@ -31,10 +32,8 @@ boil.kitchen.prototype = {
         map.setCollision(63,78,'kitchen');
         map.setCollision(93,108,'kitchen');
         map.setCollisionBetween(121,123, 'kitchen')//left
-        
-        map.setCollisionBetween(187,195,'kitchen');
-        map.setCollisionBetween(172 ,180, 'kitchen');
-        map.setCollisionBetween(157,165,'kitchen');
+       
+        map.setCollisionBetween(142,150,'kitchen');
         
         map.setCollision(135,'kitchen');
         map.setCollision(150,165,'kitchen');
