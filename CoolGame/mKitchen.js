@@ -6,7 +6,7 @@ boil.mKitchen.prototype = {
     preload: function(){
          game.load.tilemap('mKitchenTilemap', 'Assets/Backgrounds/mKitchenTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('mKitchenTileset', 'Assets/Backgrounds/mKitchenTileset.png');
-         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',470,950);
+         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         
     },
     create: function(){
@@ -28,12 +28,12 @@ boil.mKitchen.prototype = {
     update: function(){
            if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
         ptag.body.velocity.x=300;
-        ptag.animations.play('walk', 20, true);
+        ptag.animations.play('walk', 11, true);
         ptag.scale.setTo(-.45,.45)
        }
     else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
         ptag.body.velocity.x=-300;
-        ptag.animations.play('walk', 20, true);
+        ptag.animations.play('walk', 11, true);
         ptag.scale.setTo(.45,.45)
        }
     else{

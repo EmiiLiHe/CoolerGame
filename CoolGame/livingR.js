@@ -6,12 +6,12 @@ boil.livingR.prototype = {
     preload: function(){
         game.load.tilemap('livingRTilemap', 'Assets/Backgrounds/livingRTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('livingRTileset', 'Assets/Backgrounds/livingRTileset.png');
-        game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',470,950);
+        game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
          
     },
     create: function(){
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        //game.world.setBounds(0,0, 1500,1500);
+        game.world.setBounds(0,0, 1500,1500);
         //game.stage.backgroundColor = '#A80000';
         console.log('You are in the livingR state');        
         var map = game.add.tilemap('livingRTilemap');
@@ -29,12 +29,12 @@ boil.livingR.prototype = {
 update: function(){
     if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
         ptag.body.velocity.x=300;
-        ptag.animations.play('walk', 20, true);
+        ptag.animations.play('walk', 11, true);
         ptag.scale.setTo(-.45,.45)
        }
     else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
         ptag.body.velocity.x=-300;
-        ptag.animations.play('walk', 20, true);
+        ptag.animations.play('walk', 11, true);
         ptag.scale.setTo(.45,.45)
        }
     else{
