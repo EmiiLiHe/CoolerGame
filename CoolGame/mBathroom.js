@@ -22,7 +22,28 @@ boil.mBathroom.prototype = {
         game.physics.enable(ptag);
         ptag.scale.setTo(-.45,.45);
         ptag.anchor.setTo(0.5);
-        //map.setCollisionBetween(1,25,'bathroom');   
+        
+        map.setCollisionBetween(1,30,'mBathroom'); //ceiling
+        map.setCollisionBetween(196,225,'mBathroom') //bottom
+        
+        map.setCollision(31,46, 'mBathroom');
+        map.setCollision(61,76,'mBathroom');
+        map.setCollision(91,'mBathroom'); //left
+        
+        map.setCollision(90,106,'mBathroom');
+        
+        map.setCollision(135,'mBathroom');
+        map.setCollision(150,165,'mBathroom');
+        map.setCollision(180,195,'mBathroom');
+        map.setCollision(210,225,'mBathroom');
+        map.setCollisionBetween(49,50,'mBathroom'); //toilet
+        map.setCollisionBetween(38,39,'mBathroom'); //sink
+        
+        map.setCollisionBetween(42,45,'mBathroom');//bath
+        map.setCollisionBetween(57,60,'mBathroom'); //bath
+        map.setCollisionBetween(72,75,'mBathroom'); //bath
+        map.setCollisionBetween(87,90,'mBathroom'); //bath
+        map.setCollisionBetween(102,105,'mBathroom'); //bath   
              
     },
     update: function(){

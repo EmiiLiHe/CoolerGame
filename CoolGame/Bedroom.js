@@ -11,7 +11,7 @@ boil.bedroom.prototype = {
     },
     create: function(){
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        //game.world.setBounds(0,0, 1500,1500);
+        game.world.setBounds(0,0, 1500,1500);
         //game.stage.backgroundColor = '#A80000';
         console.log('You are in the bedroom state');        
         var map = game.add.tilemap('bedroomTilemap');
@@ -23,13 +23,13 @@ boil.bedroom.prototype = {
         ptag.scale.setTo(.45,.45);
         ptag.anchor.setTo(0.5);
         
-        map.setCollisionBetween(1,30,'bedroom'); //ceiling
+        map.setCollisionBetween(1,45,'bedroom'); //ceiling
         map.setCollisionBetween(211,225,'bedroom') //bottom
         map.setCollision(103,118,'bedroom');
         map.setCollisionBetween(133,135,'bedroom');
         
-        map.setCollisionBetween(40,43,'bedroom');
-        map.setCollisionBetween(55,58,'bedroom'); //dresser
+//        map.setCollisionBetween(40,43,'bedroom');
+//        map.setCollisionBetween(55,58,'bedroom'); //dresser
         
         map.setCollision(151,'bedroom');
         map.setCollision(151,165,'bedroom');
@@ -38,9 +38,12 @@ boil.bedroom.prototype = {
         map.setCollisionBetween(61,65,'bedroom');
         map.setCollisionBetween(76,80,'bedroom'); 
         map.setCollisionBetween(91,95,'bedroom');
-        map.setCollisionBetween(106,110,'bedroom'); 
-        //map.setCollisionBetween(121,125,'bedroom'); //bed
+        map.setCollisionBetween(106,110,'bedroom');//bed
         
+        map.setCollisionBetween(121,126,'bedroom'); 
+        map.setCollisionBetween(136,141,'bedroom'); 
+        map.setCollisionBetween(151,156,'bedroom'); 
+        map.setCollisionBetween(165,170,'bedroom'); //desk+chair
         
              
 },
@@ -74,7 +77,7 @@ update: function(){
     game.physics.arcade.collide(ptag,bedroom)
     
      if (ptag.x>1500){
-     changeState('kitchen');
+     changeState('mBathroom');
      };
     }
 };
