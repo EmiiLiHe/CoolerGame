@@ -3,6 +3,9 @@ boil.hallway = function(){};
 var ptag, hallway;
 
 boil.hallway.prototype = {
+    init: function(){
+        console.log(x + ' ' + y)
+    },
     preload: function(){
         game.load.tilemap('hallwayTilemap', 'Assets/Backgrounds/hallwayTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('hallwayTileset', 'Assets/Backgrounds/hallwayTileset.png');
@@ -17,10 +20,10 @@ boil.hallway.prototype = {
         var map = game.add.tilemap('hallwayTilemap');
         map.addTilesetImage('hallwayTileset');
         bathroom = map.createLayer('hallway');
-        ptag = game.add.sprite(game.world.centerX-650,game.world.centerY+300, 'ptag');
+        ptag = game.add.sprite(x, y, 'ptag');
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7]);
         game.physics.enable(ptag);
-        ptag.scale.setTo(-.45,.45);
+        ptag.scale.setTo(flip,.45);
         ptag.anchor.setTo(0.5);
         //ptag.body.collideWorldBounds = true;
         //game.camera.deadzone = new Phaser.Rectangle(1000,1000,1000,1000);
@@ -60,11 +63,11 @@ update: function(){
 }
     game.physics.arcade.collide(ptag,hallway)
     
-    if (ptag.x>1475){
-     changeState('bathroom');
+    if (ptag.x>1475 && ptag.y<900){
+     changeState('kitchen');
      }
-    if (ptag.x<20){
-        changeState('bedroom');
+    if (ptag.x>1475 && ptag.y>1790){
+        changeState('bathroom');
     }
     }
 };

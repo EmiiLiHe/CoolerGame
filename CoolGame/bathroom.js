@@ -1,9 +1,12 @@
 boil.bathroom = function(){};
 
-var ptag, bathroom;
+var ptag, bathroom, x, y, flip;
 
 boil.bathroom.prototype = {
     preload: function(){
+        x = 1370;
+        y = 1945;
+        flip = 0.45;
         game.load.tilemap('bathroomTilemap', 'Assets/Backgrounds/bathroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('bathroomTileset', 'Assets/Backgrounds/bathroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
@@ -75,7 +78,7 @@ update: function(){
     game.physics.arcade.collide(ptag,bathroom)
     
      if (ptag.x< 15){
-     changeState('hallway');  
+        changeState('hallway');  
      };
     }
 };

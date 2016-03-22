@@ -11,6 +11,9 @@ boil.kitchen.prototype = {
          
     },
 create: function(){
+        x = 1370;
+        y = 875;
+        flip = 0.45;
         game.physics.startSystem(Phaser.Physics.ARCADE);
         //game.world.setBounds(0,0, 1500,1500);
         //game.stage.backgroundColor = '#A80000';
@@ -18,7 +21,7 @@ create: function(){
         var map = game.add.tilemap('kitchenTilemap');
         map.addTilesetImage('kitchenTileset');
         kitchen = map.createLayer('kitchen');
-        ptag = game.add.sprite(game.world.centerX-650,game.world.centerY+380, 'ptag');
+        ptag = game.add.sprite(110,1170, 'ptag');
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7]);
         game.physics.enable(ptag);
         ptag.scale.setTo(-.45,.45);
@@ -72,8 +75,8 @@ update: function(){
 }
     game.physics.arcade.collide(ptag,kitchen)
     
-     if (ptag.x< 15){
-     changeState('bathroom');
+     if (ptag.x< 20){
+        changeState('hallway', 1385, 885);
      };
     }
 };

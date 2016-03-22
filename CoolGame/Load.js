@@ -12,5 +12,7 @@ boil.Load.prototype = {
 };
 
 function changeState(state){
+    console.log('x', x);
+    console.log('y', y);
     game.state.start(state);
 }
