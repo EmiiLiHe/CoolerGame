@@ -69,5 +69,11 @@ update: function(){
     if (ptag.x>1475 && ptag.y>1790){
         changeState('bathroom');
     }
+    if (ptag.x<20 && ptag.y<1120){
+        changeState('bedroom');
+    }
+    if (ptag.x<20 && ptag.y>1695){
+        changeState('livingR')
+    }
     }
 };

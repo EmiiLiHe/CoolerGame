@@ -4,6 +4,9 @@ var ptag, livingR;
 
 boil.livingR.prototype = {
     preload: function(){
+        x = 105;
+        y = 1810;
+        flip = 0.45;
         game.load.tilemap('livingRTilemap', 'Assets/Backgrounds/livingRTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('livingRTileset', 'Assets/Backgrounds/livingRTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
