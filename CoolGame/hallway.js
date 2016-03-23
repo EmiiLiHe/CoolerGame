@@ -34,7 +34,6 @@ boil.hallway.prototype = {
              
 },
 update: function(){
-     
     if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
         ptag.body.velocity.x=300;
         ptag.animations.play('walk', 11, true);
