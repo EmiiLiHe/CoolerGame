@@ -28,20 +28,23 @@ create: function(){
         ptag.anchor.setTo(0.5);
         game.add.sprite(0,0,'counters');
         
-//        map.setCollisionBetween(1,30,'kitchen'); //ceiling
-//        map.setCollisionBetween(211,225,'kitchen') //bottom
-//        
-//        map.setCollision(33,48, 'kitchen');
-//        map.setCollision(63,78,'kitchen');
-//        map.setCollision(93,108,'kitchen');
-//        map.setCollisionBetween(121,123, 'kitchen');//left
-//       
-//        map.setCollisionBetween(127,135,'kitchen');
-//        
-//        map.setCollision(135,'kitchen');
-//        map.setCollision(150,165,'kitchen');
-//        map.setCollision(180,195,'kitchen');
-//        map.setCollision(210,225,'kitchen');
+        map.setCollisionBetween(1,90,'kitchen'); //ceiling
+        map.setCollisionBetween(781,840,'kitchen') //bottom
+        
+        map.setCollision(50,45, 'kitchen');
+        map.setCollision(60,75,'kitchen');
+        map.setCollision(90,105,'kitchen');
+        map.setCollision(120,135,'kitchen');
+        map.setCollision(150,165,'kitchen');
+        map.setCollision(180,220,'kitchen');
+        map.setCollision(240,255,'kitchen'); //left
+       
+        map.setCollisionBetween(127,135,'kitchen');
+        
+        map.setCollision(135,'kitchen');
+        map.setCollision(150,165,'kitchen');
+        map.setCollision(180,195,'kitchen');
+        map.setCollision(210,225,'kitchen');
    
         
              
