@@ -43,10 +43,10 @@ boil.bedroom.prototype = {
         map.setCollisionBetween(91,95,'bedroom');
         map.setCollisionBetween(106,110,'bedroom');//bed
         
-        map.setCollisionBetween(121,126,'bedroom'); 
-        map.setCollisionBetween(136,141,'bedroom'); 
+        map.setCollisionBetween(121,125,'bedroom'); 
+        map.setCollisionBetween(136,139,'bedroom'); 
         map.setCollisionBetween(151,156,'bedroom'); 
-        map.setCollisionBetween(165,170,'bedroom'); //desk+chair
+        map.setCollisionBetween(166,169,'bedroom'); //desk+chair
         
              
 },

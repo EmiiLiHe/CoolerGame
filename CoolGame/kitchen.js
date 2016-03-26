@@ -29,22 +29,26 @@ create: function(){
         game.add.sprite(0,0,'counters');
         
         map.setCollisionBetween(1,90,'kitchen'); //ceiling
-        map.setCollisionBetween(781,840,'kitchen') //bottom
+        map.setCollisionBetween(841,900,'kitchen') //bottom
+  
+        map.setCollision(365,395,'kitchen');
+        map.setCollision(425,455,'kitchen'); 
+        map.setCollisionBetween(481,485, 'kitchen');   //left
+
+        map.setCollisionBetween(271,289,'kitchen');
+        map.setCollisionBetween(301,319,'kitchen');
+        map.setCollisionBetween(331,349,'kitchen');
+        map.setCollisionBetween(361,379,'kitchen');      
+        map.setCollisionBetween(391,409,'kitchen');
+        map.setCollisionBetween(421,439,'kitchen'); // table & chair
         
-        map.setCollision(50,45, 'kitchen');
-        map.setCollision(60,75,'kitchen');
-        map.setCollision(90,105,'kitchen');
-        map.setCollision(120,135,'kitchen');
-        map.setCollision(150,165,'kitchen');
-        map.setCollision(180,220,'kitchen');
-        map.setCollision(240,255,'kitchen'); //left
-       
-        map.setCollisionBetween(127,135,'kitchen');
-        
-        map.setCollision(135,'kitchen');
-        map.setCollision(150,165,'kitchen');
-        map.setCollision(180,195,'kitchen');
-        map.setCollision(210,225,'kitchen');
+        map.setCollision(30,60,'kitchen');
+        map.setCollision(90,120,'kitchen');
+        map.setCollision(150,180,'kitchen');
+        map.setCollision(690,720,'kitchen');
+        map.setCollision(750,780,'kitchen');
+        map.setCollision(810,840,'kitchen');
+        map.setCollision(870,900,'kitchen');//right
    
         
              
