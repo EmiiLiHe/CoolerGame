@@ -31,7 +31,6 @@ boil.hallway.prototype = {
         //game.camera.deadzone.setTo(1000,1000,1000,1000);
         //map.setCollisionBetween(1,25,'hallway');       
         
-             
 },
 update: function(){
     if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
