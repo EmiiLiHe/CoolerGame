@@ -19,7 +19,7 @@ boil.hallway.prototype = {
         console.log('You are in the hallway state');        
         var map = game.add.tilemap('hallwayTilemap');
         map.addTilesetImage('hallwayTileset');
-        bathroom = map.createLayer('hallway');
+        hallway = map.createLayer('hallway');
         ptag = game.add.sprite(x, y, 'ptag');
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7]);
         game.physics.enable(ptag);
@@ -29,7 +29,20 @@ boil.hallway.prototype = {
         //game.camera.deadzone = new Phaser.Rectangle(1000,1000,1000,1000);
         game.camera.follow(ptag);
         //game.camera.deadzone.setTo(1000,1000,1000,1000);
-        //map.setCollisionBetween(1,25,'hallway');       
+        //map.setCollisionBetween(1,25,'hallway');     
+        
+        map.setCollisionBetween(1,4,'hallway');
+        map.setCollisionBetween(16,19,'hallway');
+        map.setCollisionBetween(31,34,'hallway');
+        map.setCollisionBetween(46,49,'hallway');
+        map.setCollisionBetween(61,64,'hallway');
+        map.setCollisionBetween(76,79,'hallway');
+        map.setCollisionBetween(91,94,'hallway');
+        map.setCollisionBetween(106,109,'hallway');
+       
+        
+        
+        
         
 },
 update: function(){
