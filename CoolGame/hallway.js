@@ -30,6 +30,8 @@ boil.hallway.prototype = {
         game.camera.follow(ptag);
         //game.camera.deadzone.setTo(1000,1000,1000,1000);
         //map.setCollisionBetween(1,25,'hallway');     
+        map.setCollisionBetween(1,15,'hallway');
+        map.setCollisionBetween(22,24,'hallway');
         
         map.setCollisionBetween(1,4,'hallway');
         map.setCollisionBetween(16,19,'hallway');
@@ -40,7 +42,12 @@ boil.hallway.prototype = {
         map.setCollisionBetween(91,94,'hallway');
         map.setCollisionBetween(106,109,'hallway');
        
-        
+        map.setCollisionBetween(211,214,'hallway');
+        map.setCollisionBetween(316,319,'hallway');
+        map.setCollisionBetween(436,450,'hallway');
+        map.setCollision(334,349,'hallway');
+        map.setCollision(364,379,'hallway');
+        map.setCollision(394,409,'hallway');
         
         
         
