@@ -20,7 +20,7 @@ boil.livingR.prototype = {
         console.log('You are in the livingR state');        
         var map = game.add.tilemap('livingRTilemap');
         map.addTilesetImage('livingRTileset');
-        bathroom = map.createLayer('livingR');
+        livingR = map.createLayer('livingR');
         sammy = game.add.sprite(0,0,'sammy');
         sammy.animations.add('move',[0,1]);
         sammy.animations.play('move', 2, true);
@@ -30,7 +30,10 @@ boil.livingR.prototype = {
         ptag.scale.setTo(.45,.45);
         ptag.anchor.setTo(0.5);
         game.camera.follow(ptag);
-        //map.setCollisionBetween(1,25,'livingR');       
+        
+        map.setCollisionBetween(1,14,'livingR');
+        map.setCollisionBetween(15,28,'livingR');//ceiling
+        //map.setCollisionBetween(,'livingR');
         
              
 },

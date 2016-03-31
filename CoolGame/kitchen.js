@@ -28,30 +28,27 @@ create: function(){
         ptag.anchor.setTo(0.5);
         game.add.sprite(0,0,'counters');
         
+        
         map.setCollisionBetween(1,90,'kitchen'); //ceiling
         map.setCollisionBetween(841,900,'kitchen') //bottom
   
         map.setCollision(365,395,'kitchen');
         map.setCollision(425,455,'kitchen'); 
         map.setCollisionBetween(481,485, 'kitchen');   //left
-
-        map.setCollisionBetween(271,289,'kitchen');
-        map.setCollisionBetween(301,319,'kitchen');
-        map.setCollisionBetween(331,349,'kitchen');
-        map.setCollisionBetween(361,379,'kitchen');      
-        map.setCollisionBetween(391,409,'kitchen');
-        map.setCollisionBetween(421,439,'kitchen'); // table & chair
+        map.setCollisionBetween(185,198,'kitchen'); // table & chair
+        map.setCollisionBetween(146,150,'kitchen');//cupboard
+        map.setCollisionBetween(524,540,'kitchen');//counters
         
         map.setCollision(30,60,'kitchen');
         map.setCollision(90,120,'kitchen');
         map.setCollision(150,180,'kitchen');
+        map.setCollision(300,330,'kitchen');
+        map.setCollision(360,390,'kitchen');
         map.setCollision(690,720,'kitchen');
         map.setCollision(750,780,'kitchen');
         map.setCollision(810,840,'kitchen');
         map.setCollision(870,900,'kitchen');//right
-   
-        
-             
+              
 },
 update: function(){
     if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){

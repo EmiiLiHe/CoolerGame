@@ -1,4 +1,10 @@
 boil.bathroom = function(){};
+//var option = false;
+//var firstText;
+//var moreText;
+//var words = false;
+//var textJ;
+//var textbox;
 
 var ptag, bathroom, x, y, flip;
 
@@ -13,6 +19,9 @@ boil.bathroom.prototype = {
          
     },
     create: function(){
+//        var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+//        enter.onDown.add(this.changeText, this);
+        
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.world.setBounds(0,0, 1500, 1500);
         //game.stage.backgroundColor = '#A80000';
