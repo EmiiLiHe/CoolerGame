@@ -33,8 +33,25 @@ boil.livingR.prototype = {
         
         map.setCollisionBetween(1,14,'livingR');
         map.setCollisionBetween(15,28,'livingR');//ceiling
-        //map.setCollisionBetween(,'livingR');
         
+        map.setCollision(57,71,'livingR');
+        map.setCollision(85,99,'livingR');
+        map.setCollision(113,127,'livingR');
+        map.setCollision(141,155,'livingR');
+        map.setCollision(169,183,'livingR');
+        map.setCollision(197,211,'livingR');//left
+        
+        //map.setCollisionBetween(122,126,'livingR');
+        map.setCollisionBetween(136,140,'livingR');//entrance bit
+        map.setCollisionBetween(150,154,'livingR');
+        map.setCollisionBetween(164,168,'livingR'); //TV
+        map.setCollision(210,224,'livingR'); //right
+        
+        map.setCollisionBetween(29,37,'livingR');
+        map.setCollisionBetween(42,50,'livingR')//shelf&sammy
+        
+        map.setCollisionBetween(253,258,'livingR');
+        map.setCollisionBetween(245,252,'livingR');//bottom        
              
 },
 update: function(){
