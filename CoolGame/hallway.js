@@ -10,6 +10,10 @@ boil.hallway.prototype = {
         game.load.tilemap('hallwayTilemap', 'Assets/Backgrounds/hallwayTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('hallwayTileset', 'Assets/Backgrounds/hallwayTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
+        game.load.image('lowerwall','Assets/Backgrounds/lowerwall.png',3000,1500);
+        game.load.image('upperwall','Assets/Backgrounds/upperwall.png',3000,1500);
+        game.load.image('middlewall','Assets/Backgrounds/middlewall4.png',3000,1500);
+        game.load.image('lowerwallr','Assets/Backgrounds/lowerwallr.png',3000,1500);
          
     },
     create: function(){
@@ -25,6 +29,10 @@ boil.hallway.prototype = {
         game.physics.enable(ptag);
         ptag.scale.setTo(flip,.45);
         ptag.anchor.setTo(0.5);
+        game.add.sprite(0,0,'lowerwall');
+        game.add.sprite(0,0,'upperwall');
+        game.add.sprite(0,0,'middlewall');
+        game.add.sprite(0,0,'lowerwallr');
         //ptag.body.collideWorldBounds = true;
         //game.camera.deadzone = new Phaser.Rectangle(1000,1000,1000,1000);
         game.camera.follow(ptag);
@@ -49,7 +57,17 @@ boil.hallway.prototype = {
         map.setCollision(364,379,'hallway');
         map.setCollision(394,409,'hallway');
         
+        map.setCollision(12,27,'hallway');//right side
+        map.setCollision(42,'hallway');
+        map.setCollisionBetween(87,90,'hallway');
         
+        map.setCollisionBetween(177,180,'hallway');
+        map.setCollisionBetween(237,240,'hallway');
+        map.setCollision(192,207,'hallway');
+        
+        map.setCollisionBetween(342,345,'hallway');
+        map.setCollision(357,372,'hallway');
+        map.setCollision(387,432,'hallway');
         
 },
 update: function(){
