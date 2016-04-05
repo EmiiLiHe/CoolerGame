@@ -6,7 +6,7 @@ boil.bedroom.prototype = {
     preload: function(){
         x = 90;
         y = 1100;
-        flip = 0.45;
+        flip = -0.45;
         game.load.tilemap('bedroomTilemap', 'Assets/Backgrounds/bedroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('bedroomTileset', 'Assets/Backgrounds/bedroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
@@ -46,7 +46,11 @@ boil.bedroom.prototype = {
         map.setCollisionBetween(121,125,'bedroom'); 
         map.setCollisionBetween(136,139,'bedroom'); 
         map.setCollisionBetween(151,156,'bedroom'); 
+<<<<<<< Updated upstream
         map.setCollisionBetween(166,169,'bedroom'); //desk+chair
+=======
+        map.setCollisionBetween(166,170,'bedroom'); //desk+chair
+>>>>>>> Stashed changes
         
              
 },
