@@ -6,8 +6,8 @@ boil.bathroom = function(){};
 //var textJ;
 //var textbox;
 
-var ptag, bathroom, x, y, flip, map, furniture;
-
+var ptag, bathroom, x, y, flip, map, furniture, ikea, textbox;
+//ikea is whether or not you're near furniture
 boil.bathroom.prototype = {
     preload: function(){
         x = 1370;
@@ -16,11 +16,12 @@ boil.bathroom.prototype = {
         game.load.tilemap('bathroomTilemap', 'Assets/Backgrounds/bathroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('bathroomTileset', 'Assets/Backgrounds/bathroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
+        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 147,47);
          
     },
     create: function(){
-//        var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-//        enter.onDown.add(this.changeText, this);
+        var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(this.changeText, this);
         
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.world.setBounds(0,0, 1500, 1500);
@@ -36,6 +37,7 @@ boil.bathroom.prototype = {
         game.physics.enable(ptag);
         ptag.scale.setTo(-.45,.45);
         ptag.anchor.setTo(0.5);
+
         map.setCollisionBetween(1,30,'bathroom'); //ceiling
         map.setCollisionBetween(196,225,'bathroom') //bottom
         
@@ -73,12 +75,14 @@ boil.bathroom.prototype = {
         if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
             ptag.body.velocity.x=300;
             ptag.animations.play('walk', 11, true);
-            ptag.scale.setTo(-.45,.45)
+            ptag.scale.setTo(-.45,.45);
+            ikea = null;
            }
         else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
             ptag.body.velocity.x=-300;
             ptag.animations.play('walk', 11, true);
-            ptag.scale.setTo(.45,.45)
+            ptag.scale.setTo(.45,.45);
+            ikea = null;
            }
         else{
             ptag.animations.stop('walk');
@@ -88,10 +92,12 @@ boil.bathroom.prototype = {
         if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
             ptag.body.velocity.y =-300;
             ptag.animations.play('walkup',6,true);
+            ikea = null;
            }
         else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
             ptag.body.velocity.y =300;
             ptag.animations.play('walkdown',6,true);
+            ikea = null;
         }
         else{
             ptag.body.velocity.y=0;
@@ -100,7 +106,9 @@ boil.bathroom.prototype = {
         var self = this;
         game.physics.arcade.collide(ptag,bathroom, function(obj1, obj2) { 
             console.log('collided', self.furnitureType(obj2.index));
+            ikea = self.furnitureType(obj2.index);
         })
+    
 
          if (ptag.x< 15){
             changeState('hallway');  
@@ -129,6 +137,23 @@ boil.bathroom.prototype = {
             }
         }
          
-     }
+     },
+    changeText: function(){
+        console.log(ikea);
+        if(textbox){
+            textbox.destroy();
+            textbox=null;
+        }
+        else if(ikea!== null){
+            textbox = game.add.sprite(0,0,'textbox');
+            textbox.scale.setTo(8,8);
+            textbox.animations.add('float',[0,1,2,3,4,5]);
+            textbox.animations.play('float',5,true);  
+            
+            //game.add.text(10, 10, 'hello');
+        }
+    }
+     
 };
+    
  
