@@ -6,7 +6,7 @@ boil.bathroom = function(){};
 //var textJ;
 //var textbox;
 
-var ptag, bathroom, x, y, flip;
+var ptag, bathroom, x, y, flip, map, furniture;
 
 boil.bathroom.prototype = {
     preload: function(){
@@ -26,7 +26,7 @@ boil.bathroom.prototype = {
         game.world.setBounds(0,0, 1500, 1500);
         //game.stage.backgroundColor = '#A80000';
         console.log('You are in the bathroom state');        
-        var map = game.add.tilemap('bathroomTilemap');
+        map = game.add.tilemap('bathroomTilemap');
         map.addTilesetImage('bathroomTileset');
         bathroom = map.createLayer('bathroom');
         ptag = game.add.sprite(game.world.centerX-650, 1065, 'ptag');
@@ -49,47 +49,86 @@ boil.bathroom.prototype = {
         map.setCollision(150,165,'bathroom');
         map.setCollision(180,195,'bathroom');
         map.setCollision(210,225,'bathroom');
-        map.setCollisionBetween(49,50,'bathroom'); //toilet
-        map.setCollisionBetween(38,39,'bathroom'); //sink
         
-        map.setCollisionBetween(42,45,'bathroom');//bath
-        map.setCollisionBetween(57,60,'bathroom'); //bath
-        map.setCollisionBetween(72,75,'bathroom'); //bath
-        map.setCollisionBetween(87,90,'bathroom'); //bath
-        map.setCollisionBetween(102,105,'bathroom'); //bath
+        
+        furniture = {
+            toilet: [
+                [49, 50]
+            ],
+            sink: [
+                [38,39]
+            ],
+            bath: [
+                [42,45],
+                [57,60],
+                [72,75],
+                [87,90],
+                [102,105]
+            ]
+        };
+        this.setupFurniture();
              
-},
-update: function(){
-    if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-        ptag.body.velocity.x=300;
-        ptag.animations.play('walk', 11, true);
-        ptag.scale.setTo(-.45,.45)
-       }
-    else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
-        ptag.body.velocity.x=-300;
-        ptag.animations.play('walk', 11, true);
-        ptag.scale.setTo(.45,.45)
-       }
-    else{
-        ptag.animations.stop('walk');
-        ptag.frame = 0;
-        ptag.body.velocity.x=0;
-    }
-    if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
-        ptag.body.velocity.y =-300;
-        ptag.animations.play('walkup',6,true);
-       }
-    else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
-        ptag.body.velocity.y =300;
-        ptag.animations.play('walkdown',6,true);
-    }
-    else{
-        ptag.body.velocity.y=0;
-}
-    game.physics.arcade.collide(ptag,bathroom)
+    },
+    update: function(){
+        if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+            ptag.body.velocity.x=300;
+            ptag.animations.play('walk', 11, true);
+            ptag.scale.setTo(-.45,.45)
+           }
+        else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+            ptag.body.velocity.x=-300;
+            ptag.animations.play('walk', 11, true);
+            ptag.scale.setTo(.45,.45)
+           }
+        else{
+            ptag.animations.stop('walk');
+            ptag.frame = 0;
+            ptag.body.velocity.x=0;
+        }
+        if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
+            ptag.body.velocity.y =-300;
+            ptag.animations.play('walkup',6,true);
+           }
+        else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+            ptag.body.velocity.y =300;
+            ptag.animations.play('walkdown',6,true);
+        }
+        else{
+            ptag.body.velocity.y=0;
+        }
+        
+        var self = this;
+        game.physics.arcade.collide(ptag,bathroom, function(obj1, obj2) { 
+            console.log('collided', self.furnitureType(obj2.index));
+        })
+
+         if (ptag.x< 15){
+            changeState('hallway');  
+         };
+    },
     
-     if (ptag.x< 15){
-        changeState('hallway');  
-     };
-    }
+    setupFurniture: function() {
+        var keylist = Object.keys(furniture);
+        for(var i=0; i<keylist.length; i++){
+            var key = keylist[i];
+            for(var j=0; j<furniture[key].length;j++){
+                var tiles = furniture[key][j];
+                map.setCollisionBetween(tiles[0],tiles[1],'bathroom');
+            }
+        }
+    },
+     furnitureType: function(index){
+         var keylist = Object.keys(furniture);
+        for(var i=0; i<keylist.length; i++){
+            var key = keylist[i];
+            for(var j=0; j<furniture[key].length;j++){
+                var tiles = furniture[key][j];
+                if (index<=tiles[1] && index>=tiles[0]){
+                    return key
+                }
+            }
+        }
+         
+     }
 };
+ 
