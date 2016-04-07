@@ -1,10 +1,4 @@
 boil.bathroom = function(){};
-//var option = false;
-//var firstText;
-//var moreText;
-//var words = false;
-//var textJ;
-//var textbox;
 
 var ptag, bathroom, x, y, flip, map, furniture, ikea, textbox;
 //ikea is whether or not you're near furniture
@@ -31,9 +25,10 @@ boil.bathroom.prototype = {
         map.addTilesetImage('bathroomTileset');
         bathroom = map.createLayer('bathroom');
         ptag = game.add.sprite(game.world.centerX-650, 1065, 'ptag');
-        ptag.animations.add('walkdown',[0,1,2,3]);
-        ptag.animations.add('walkup',[4,5,6,7]);
-        ptag.animations.add('walk',[8,9,10,11,12,13,14,15]);
+        
+        ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
+        ptag.animations.add('walkup',[8,9,10,11,]);
+        
         game.physics.enable(ptag);
         ptag.scale.setTo(-.45,.45);
         ptag.anchor.setTo(0.5);
@@ -52,7 +47,6 @@ boil.bathroom.prototype = {
         map.setCollision(180,195,'bathroom');
         map.setCollision(210,225,'bathroom');
         
-        
         furniture = {
             toilet: [
                 [49, 50]
@@ -68,19 +62,19 @@ boil.bathroom.prototype = {
                 [102,105]
             ]
         };
-        this.setupFurniture();
+        this.setupFurniture()
              
     },
     update: function(){
         if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
             ptag.body.velocity.x=300;
-            ptag.animations.play('walk', 11, true);
+            ptag.animations.play('walk', 7, true);
             ptag.scale.setTo(-.45,.45);
             ikea = null;
            }
         else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
             ptag.body.velocity.x=-300;
-            ptag.animations.play('walk', 11, true);
+            ptag.animations.play('walk', 7, true);
             ptag.scale.setTo(.45,.45);
             ikea = null;
            }
@@ -91,12 +85,12 @@ boil.bathroom.prototype = {
         }
         if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
             ptag.body.velocity.y =-300;
-            ptag.animations.play('walkup',6,true);
+            ptag.animations.play('walkup',7,true);
             ikea = null;
            }
         else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
             ptag.body.velocity.y =300;
-            ptag.animations.play('walkdown',6,true);
+            ptag.animations.play('walk',7,true);
             ikea = null;
         }
         else{
@@ -145,7 +139,7 @@ boil.bathroom.prototype = {
             textbox=null;
         }
         else if(ikea!== null){
-            textbox = game.add.sprite(0,0,'textbox');
+            textbox = game.add.sprite(10,0,'textbox');
             textbox.scale.setTo(8,8);
             textbox.animations.add('float',[0,1,2,3,4,5]);
             textbox.animations.play('float',5,true);  
