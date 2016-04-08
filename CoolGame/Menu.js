@@ -1,5 +1,5 @@
 boil.Menu = function(){};
-var menu;
+var menu, ikea = null;
 
 boil.Menu.prototype = {
     preload: function(){
@@ -22,3 +22,20 @@ boil.Menu.prototype = {
         
     }
 };
+
+function changeText(){
+        console.log('ikea', ikea);
+        if(textbox){
+            textbox.destroy();
+            textbox=null;
+        }
+        else if(ikea!== null){
+            textbox = game.add.sprite(10,0,'textbox');
+            textbox.scale.setTo(8,8);
+            textbox.animations.add('float',[0,1,2,3,4,5]);
+            textbox.animations.play('float',5,true);  
+            
+            //game.add.text(10, 10, 'hello');
+            ikea = null;
+        }
+    }

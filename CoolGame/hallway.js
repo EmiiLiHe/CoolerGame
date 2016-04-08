@@ -98,14 +98,16 @@ update: function(){
         ptag.body.velocity.y=0;
 }
     game.physics.arcade.collide(ptag,hallway)
-    
-    if (ptag.x>1475 && ptag.y<900){
-     changeState('kitchen');
-     }
-    if (ptag.x>1475 && ptag.y>1790){
-        changeState('bathroom');
+    if (ptag.x > 1475) {
+        if (ptag.y<900){
+            changeState('kitchen');
+        }
+        if (ptag.y>1810){
+            changeState('bathroom');
+        }
     }
-    if (ptag.x<20 && ptag.y<1120){
+    
+    if (ptag.x<20 && ptag.y<1189){
         changeState('bedroom');
     }
     if (ptag.x<20 && ptag.y>1695){
