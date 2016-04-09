@@ -158,7 +158,7 @@ boil.bathroom.prototype = {
             textbox.destroy();
             textbox=null;
         }
-        else if(ikea!== null){
+        else if(ikea!== undefined){
             textbox = game.add.sprite(10,0,'textbox');
             textbox.scale.setTo(8,8);
             textbox.animations.add('float',[0,1,2,3,4,5]);

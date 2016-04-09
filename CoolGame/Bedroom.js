@@ -1,6 +1,6 @@
 boil.bedroom = function(){};
 
-var ptag, bedroom, x, y, flipmap, furniture, ikea, textbox;
+var ptag, bedroom, x, y, flip, map, furniture, textbox, lastKeyPressed;
 
 boil.bedroom.prototype = {
     preload: function(){
@@ -77,32 +77,43 @@ boil.bedroom.prototype = {
         this.setupFurniture()          
 },
 update: function(){
-    if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-        ptag.body.velocity.x=300;
-        ptag.animations.play('walk', 11, true);
-        ptag.scale.setTo(-.45,.45)
-       }
-    else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
-        ptag.body.velocity.x=-300;
-        ptag.animations.play('walk', 11, true);
-        ptag.scale.setTo(.45,.45)
-       }
-    else{
-        ptag.animations.stop('walk');
-        ptag.frame = 0;
-        ptag.body.velocity.x=0;
-    }
-    if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
-        ptag.body.velocity.y =-300;
-        //if(ptag.y < 1500 ){
-            //ptag.y = 1500;
-       }
-    else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
-        ptag.body.velocity.y =300;
-    }
-    else{
-        ptag.body.velocity.y=0;
-}
+            if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+            ptag.body.velocity.x=300;
+            if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+                ptag.animations.play('walk', 7, true);
+            }
+            ptag.scale.setTo(-.45,0.45);
+            ikea = null;
+            lastKeyPressed = 'right';
+           }
+        else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+            ptag.body.velocity.x=-300;
+            if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+                ptag.animations.play('walk', 7, true);
+            }
+            ptag.scale.setTo(.45,.45);
+            ikea = null;
+            lastKeyPressed = 'left';
+           }
+        else{
+            ptag.animations.stop('walk');
+            ptag.body.velocity.x=0;
+        }
+        if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
+            ptag.body.velocity.y =-300;
+            ptag.animations.play('walkup',7,true);   
+            ikea = null;
+            lastKeyPressed = 'up';
+        }
+        else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+            ptag.body.velocity.y =300;
+            ptag.animations.play('walk',7,true);
+            ikea = null;
+            lastKeyPressed = 'down';
+        }
+        else{
+            ptag.body.velocity.y=0;
+        }
             
         var self = this;
         game.physics.arcade.collide(ptag, bedroom, function(obj1, obj2) { 
@@ -113,7 +124,20 @@ update: function(){
      if (ptag.x>1500){
      changeState('hallway');
      };
-},
+     if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
+            !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&
+            !game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) &&
+            !game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
+            if (lastKeyPressed == 'right') {
+                ptag.frame = 0;
+                ptag.scale.setTo(-.45,0.45);
+            } else if (lastKeyPressed == 'up') {
+                ptag.frame = 8;
+            } else if (lastKeyPressed == 'left'){
+                ptag.frame = 0;
+            } 
+        }
+    },
   setupFurniture: function() {
         var keylist = Object.keys(furniture);
         for(var i=0; i<keylist.length; i++){
