@@ -25,17 +25,40 @@ boil.Menu.prototype = {
 
 function changeText(){
         console.log('ikea', ikea);
-        if(textbox){
+        if(textbox && wordIndex < text[ikea].dialog.length-1){
+           wordIndex++ 
+           var newText = text[ikea].dialog[wordIndex]
+           words.setText(newText)
+        }
+        else if(textbox){
             textbox.destroy();
             textbox=null;
+            words.destroy();
+            talksprite.destroy();
         }
         else if(ikea!== null){
-            textbox = game.add.sprite(10,0,'textbox');
+            var textX = 100;
+            var textY = 1000;
+            var textMargin = 25;
+            
+            textbox = game.add.sprite(textX,textY,'textbox');
             textbox.scale.setTo(8,8);
             textbox.animations.add('float',[0,1,2,3,4,5]);
             textbox.animations.play('float',5,true);  
             
-            //game.add.text(10, 10, 'hello');
-            ikea = null;
-        }
+            var style = {
+                fill : 'white',
+                wordWrap : true,
+                wordWrapWidth : textbox.width-(2*textMargin)
+            };
+            wordIndex = 0
+            words = game.add.text(textX+textMargin,textY+textMargin,text[ikea].dialog[wordIndex],style);
+            
+            if(text[ikea].sprite !== null){
+                talksprite = game.add.sprite(0,500,text[ikea].sprite);
+                talksprite.animations.add('talk', [0,1,2,3,4,5,6,7]);
+                talksprite.animations.play('talk',5,true);
+            }
+            //ikea = null;
+         }
     }
