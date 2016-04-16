@@ -1,6 +1,6 @@
 boil.livingR = function(){};
 
-var ptag, livingR, sammy, x, y, flip, map, furniture, textbox, lastKeyPressed;
+var ptag, livingR, sammy, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed;
 
 boil.livingR.prototype = {
     preload: function(){
@@ -14,6 +14,9 @@ boil.livingR.prototype = {
          
     },
     create: function(){
+        var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(changeText, this);
+        
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.world.setBounds(0,0,1400,2100);
         //game.stage.backgroundColor = '#A80000';
@@ -74,7 +77,42 @@ boil.livingR.prototype = {
             ]
         };
         this.setupFurniture()
-             
+   text = {
+            shelf: {
+                dialog: [
+                    'a collection of books you got from your mom, two pictures of you and your parents, and an old track and field trophy.',
+                ],
+                sprite: 'null'     //'talkfrige'
+            },
+            sammy:{
+                dialog: [
+                    'His name is Sammy. All he does is blow bubbles and swim.',                
+                         ],
+                sprite: 'null'
+            },
+            TV:{
+                dialog: [
+                    'your bathtub doesn’t work.',
+                    'The pipes are connected to your toilet.',
+                    'Which clogged.'
+                ],
+                sprite: 'null'
+            },
+            table: {
+                dialog: [
+                    'you are actually extremely allergic to the pollen of this plant in particular.',
+                    'Hence the tissues.'
+                ],
+                sprite: 'null' 
+            },
+            couch: {
+                 dialog: [
+                     'The couch is only for show.',
+                     'It’s actually extremely uncomfortable to sit on'
+                 ],
+                sprite: 'null'
+   },
+        };
     },
 update: function(){
     if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){

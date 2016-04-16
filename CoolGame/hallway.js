@@ -1,6 +1,6 @@
 boil.hallway = function(){};
 
-var ptag, hallway, x, y, flip, map, furniture, textbox, lastKeyPressed;
+var ptag, hallway, x, y, flip, map, furniture, textbox,ikea, lastKeyPressed;
 
 boil.hallway.prototype = {
     init: function(){
@@ -17,6 +17,9 @@ boil.hallway.prototype = {
          
     },
     create: function(){
+        var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+        enter.onDown.add(changeText, this);
+        
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.world.setBounds(0,0, 1500, 3000);
         //game.stage.backgroundColor = '#A80000';
@@ -36,11 +39,8 @@ boil.hallway.prototype = {
         game.add.sprite(0,0,'upperwall');
         game.add.sprite(0,0,'middlewall');
         game.add.sprite(0,0,'lowerwallr');
-        //ptag.body.collideWorldBounds = true;
-        //game.camera.deadzone = new Phaser.Rectangle(1000,1000,1000,1000);
         game.camera.follow(ptag);
-        //game.camera.deadzone.setTo(1000,1000,1000,1000);
-        //map.setCollisionBetween(1,25,'hallway');     
+   
         map.setCollisionBetween(1,15,'hallway');
         map.setCollisionBetween(22,24,'hallway');
         

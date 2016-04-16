@@ -4,7 +4,7 @@ var menu, ikea = null;
 boil.Menu.prototype = {
     preload: function(){
         game.load.spritesheet('menu', 'Assets/Spritesheets/menuscreen.png',600,600);
-
+        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 1500,470);
     },
     create: function(){
         console.log('You are in the Menu state');
@@ -36,18 +36,18 @@ function changeText(){
             words.destroy();
             talksprite.destroy();
         }
-<<<<<<< HEAD
+    
         else if(ikea!== undefined){
-            textbox = game.add.sprite(10,0,'textbox');
-=======
-        else if(ikea!== null){
-            var textX = 100;
+//            textbox = game.add.sprite(0,0,'textbox');
+
+        if(ikea !== null){
+            var textX =0;
             var textY = 1000;
-            var textMargin = 25;
+            var textMargin = 75;
             
             textbox = game.add.sprite(textX,textY,'textbox');
->>>>>>> origin/master
-            textbox.scale.setTo(8,8);
+
+            //textbox.scale.setTo(8,8);
             textbox.animations.add('float',[0,1,2,3,4,5]);
             textbox.animations.play('float',5,true);  
             
@@ -56,6 +56,7 @@ function changeText(){
                 wordWrap : true,
                 wordWrapWidth : textbox.width-(2*textMargin)
             };
+            
             wordIndex = 0
             words = game.add.text(textX+textMargin,textY+textMargin,text[ikea].dialog[wordIndex],style);
             
@@ -66,4 +67,5 @@ function changeText(){
             }
             //ikea = null;
          }
-    }
+ };
+};

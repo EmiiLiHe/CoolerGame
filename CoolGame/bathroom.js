@@ -1,6 +1,6 @@
 boil.bathroom = function(){};
 
-var ptag, bathroom, x, y, flip, map, furniture, textbox, lastKeyPressed,text;
+var ptag, bathroom, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text;
 //ikea is whether or not you're near furniture
 boil.bathroom.prototype = {
     preload: function(){
@@ -10,7 +10,7 @@ boil.bathroom.prototype = {
         game.load.tilemap('bathroomTilemap', 'Assets/Backgrounds/bathroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('bathroomTileset', 'Assets/Backgrounds/bathroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
-        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 147,47);
+//        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 1500,470);
         game.load.spritesheet('talkfridge','Assets/Spritesheets/talkfridge.png',450,450);
          
     },
@@ -68,23 +68,27 @@ boil.bathroom.prototype = {
         text = {
             toilet: {
                 dialog: [
-                    'dgfgsdgs',
-                    'sedgfwsdgv'
+                    'you flushed your late pet turtle down this toilet last month.',
+                    'It clogged the toilet and you couldn’t get enough money to pay for a plumber.'
                 ],
-                sprite: 'talkfridge'
+                sprite: 'null'     //'talkfrige'
             },
             sink:{
                 dialog: [
-                    'gggggggggggggggggggggggggg  ggggggggggggggg ggggggg ggg ggggggggg ggggggg ggggg',
+                    'God, you hate how you look.',
+                    'That stupid red hair and those beady eyes.',
+                    'disgusting.'
                     
                          ],
-                sprite: null
+                sprite: 'null'
             },
             bath:{
                 dialog: [
-                    '',
+                    'your bathtub doesn’t work.',
+                    'The pipes are connected to your toilet.',
+                    'Which clogged.'
                 ],
-                sprite: null
+                sprite: 'null'
             }, 
         };
     },
