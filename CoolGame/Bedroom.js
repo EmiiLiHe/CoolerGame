@@ -1,6 +1,10 @@
 boil.bedroom = function(){};
 
+<<<<<<< HEAD
 var ptag, bedroom, x, y, flip, map, furniture, textbox, lastKeyPressed;
+=======
+var ptag, bedroom, x, y, flipmap, furniture, ikea, textbox,text;
+>>>>>>> origin/master
 
 boil.bedroom.prototype = {
     preload: function(){
@@ -74,7 +78,10 @@ boil.bedroom.prototype = {
                 [106,110]
             ]
         };
-        this.setupFurniture()          
+        this.setupFurniture();
+        text = {
+            chair: 'sdgvsdsf',
+        }
 },
 update: function(){
             if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){

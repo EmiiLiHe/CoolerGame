@@ -1,11 +1,11 @@
-boil.bathroom = function(){};
+boil.wbathroom = function(){};
 
-var ptag, bathroom;
+var ptag, wbathroom;
 
-boil.bathroom.prototype = {
+boil.wbathroom.prototype = {
     preload: function(){
-        game.load.tilemap('bathroomTilemap', 'Assets/Backgrounds/bathroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
-        game.load.image('bathroomTileset', 'Assets/Backgrounds/bathroomTileset.png');
+        game.load.tilemap('wbathroomTilemap', 'Assets/Backgrounds/wwbathroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
+        game.load.image('wbathroomTileset', 'Assets/Backgrounds/wwbathroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',470,950);
          
     },
@@ -13,36 +13,36 @@ boil.bathroom.prototype = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         //game.world.setBounds(0,0, 1500,1500);
         //game.stage.backgroundColor = '#A80000';
-        console.log('You are in the bathroom state');        
-        var map = game.add.tilemap('bathroomTilemap');
-        map.addTilesetImage('bathroomTileset');
-        bathroom = map.createLayer('bathroom');
+        console.log('You are in the wbathroom state');        
+        var map = game.add.tilemap('wbathroomTilemap');
+        map.addTilesetImage('wwbathroomTileset');
+        wbathroom = map.createLayer('wbathroom');
         ptag = game.add.sprite(game.world.centerX-650,game.world.centerY+300, 'ptag');
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7]);
         game.physics.enable(ptag);
         ptag.scale.setTo(-.45,.45);
         ptag.anchor.setTo(0.5);
-        map.setCollisionBetween(1,30,'bathroom'); //ceiling
-        map.setCollisionBetween(196,225,'bathroom') //bottom
+        map.setCollisionBetween(1,30,'wbathroom'); //ceiling
+        map.setCollisionBetween(196,225,'wbathroom') //bottom
         
-        map.setCollision(31,46, 'bathroom');
-        map.setCollision(61,76,'bathroom');
-        map.setCollision(91,'bathroom'); //left
+        map.setCollision(31,46, 'wbathroom');
+        map.setCollision(61,76,'wbathroom');
+        map.setCollision(91,'wbathroom'); //left
         
-        map.setCollision(90,106,'bathroom');
+        map.setCollision(90,106,'wbathroom');
         
-        map.setCollision(135,'bathroom');
-        map.setCollision(150,165,'bathroom');
-        map.setCollision(180,195,'bathroom');
-        map.setCollision(210,225,'bathroom');
-        map.setCollisionBetween(49,50,'bathroom'); //toilet
-        map.setCollisionBetween(38,39,'bathroom'); //sink
+        map.setCollision(135,'wbathroom');
+        map.setCollision(150,165,'wbathroom');
+        map.setCollision(180,195,'wbathroom');
+        map.setCollision(210,225,'wbathroom');
+        map.setCollisionBetween(49,50,'wbathroom'); //toilet
+        map.setCollisionBetween(38,39,'wbathroom'); //sink
         
-        map.setCollisionBetween(42,45,'bathroom');//bath
-        map.setCollisionBetween(57,60,'bathroom'); //bath
-        map.setCollisionBetween(72,75,'bathroom'); //bath
-        map.setCollisionBetween(87,90,'bathroom'); //bath
-        map.setCollisionBetween(102,105,'bathroom'); //bath
+        map.setCollisionBetween(42,45,'wbathroom');//bath
+        map.setCollisionBetween(57,60,'wbathroom'); //bath
+        map.setCollisionBetween(72,75,'wbathroom'); //bath
+        map.setCollisionBetween(87,90,'wbathroom'); //bath
+        map.setCollisionBetween(102,105,'wbathroom'); //bath
              
 },
 update: function(){
@@ -72,7 +72,7 @@ update: function(){
     else{
         ptag.body.velocity.y=0;
 }
-    game.physics.arcade.collide(ptag,bathroom)
+    game.physics.arcade.collide(ptag,wbathroom)
     
      if (ptag.x< 15){
      changeState('hallway');

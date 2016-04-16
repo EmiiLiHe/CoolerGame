@@ -1,6 +1,6 @@
 boil.bathroom = function(){};
 
-var ptag, bathroom, x, y, flip, map, furniture, textbox, lastKeyPressed;
+var ptag, bathroom, x, y, flip, map, furniture, textbox, lastKeyPressed,text;
 //ikea is whether or not you're near furniture
 boil.bathroom.prototype = {
     preload: function(){
@@ -11,6 +11,7 @@ boil.bathroom.prototype = {
         game.load.image('bathroomTileset', 'Assets/Backgrounds/bathroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 147,47);
+        game.load.spritesheet('talkfridge','Assets/Spritesheets/talkfridge.png',450,450);
          
     },
     create: function(){
@@ -63,8 +64,31 @@ boil.bathroom.prototype = {
             ]
         };
         this.setupFurniture()
-             
+        // \n = new line
+        text = {
+            toilet: {
+                dialog: [
+                    'dgfgsdgs',
+                    'sedgfwsdgv'
+                ],
+                sprite: 'talkfridge'
+            },
+            sink:{
+                dialog: [
+                    'gggggggggggggggggggggggggg  ggggggggggggggg ggggggg ggg ggggggggg ggggggg ggggg',
+                    
+                         ],
+                sprite: null
+            },
+            bath:{
+                dialog: [
+                    '',
+                ],
+                sprite: null
+            }, 
+        };
     },
+    
     update: function(){
         if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
             ptag.body.velocity.x=300;
@@ -152,22 +176,7 @@ boil.bathroom.prototype = {
         }
          
      },
-    changeText: function(){
-        console.log(ikea);
-        if(textbox){
-            textbox.destroy();
-            textbox=null;
-        }
-        else if(ikea!== undefined){
-            textbox = game.add.sprite(10,0,'textbox');
-            textbox.scale.setTo(8,8);
-            textbox.animations.add('float',[0,1,2,3,4,5]);
-            textbox.animations.play('float',5,true);  
-            
-            //game.add.text(10, 10, 'hello');
-        }
-    }
-     
+
 };
     
  
