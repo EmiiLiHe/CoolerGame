@@ -1,8 +1,8 @@
-boil.kitchen = function(){};
+boil.oKitchen = function(){};
 
-var ptag, kitchen, counters, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text;
+var ptag, oKitchen,counters, x, y, flip, map, furniture, textbox,ikea, lastKeyPressed, text;
 
-boil.kitchen.prototype = {
+boil.oKitchen.prototype = {
     preload: function(){
         x = 1370;
         y = 875;
@@ -11,8 +11,8 @@ boil.kitchen.prototype = {
         game.load.image('kitchenTileset', 'Assets/Backgrounds/kitchenTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         game.load.image('counters','Assets/Backgrounds/counters.png',1500,1500);
-        
-         
+        game.load.spritesheet('talkfridge','Assets/Spritesheets/talkfridge.png',450,450);
+        game.load.spritesheet('talkjegg','Assets/Spritesheets/talkjegg.png',450,450);
     },
   create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -21,10 +21,10 @@ boil.kitchen.prototype = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.world.setBounds(0,0, 1500,1500);
         //game.stage.backgroundColor = '#A80000';
-        console.log('You are in the kitchen state');        
+        console.log('You are in the oKitchen state');        
         var map = game.add.tilemap('kitchenTilemap');
         map.addTilesetImage('kitchenTileset');
-        kitchen = map.createLayer('kitchen');
+        oKitchen = map.createLayer('kitchen');
         ptag = game.add.sprite(110,1170, 'ptag');
     
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
@@ -42,9 +42,9 @@ boil.kitchen.prototype = {
         map.setCollision(365,395,'kitchen');
         map.setCollision(425,455,'kitchen'); 
         map.setCollisionBetween(481,485, 'kitchen');   //left
-       // map.setCollisionBetween(185,198,'kitchen'); // table & chair
-       //map.setCollisionBetween(146,150,'kitchen');//spice
-        //map.setCollisionBetween(524,540,'kitchen');//counters
+       // map.setCollisionBetween(185,198,'oKitchen'); // table & chair
+       //map.setCollisionBetween(146,150,'oKitchen');//spice
+        //map.setCollisionBetween(524,540,'oKitchen');//counters
         
         map.setCollision(30,60,'kitchen');
         map.setCollision(90,120,'kitchen');
@@ -85,62 +85,79 @@ boil.kitchen.prototype = {
         text = {
              table:{
                  dialog: [
-                     'Salt. Pepper. And a single, empty plate.',
-                     'The plate reminds you of yourself.',
-                      'Better look somewhere else...'
+                     'Sometimes you lay here and cover yourself with salt',
+                     'You try to make a snow angel, but never succeed'
                 ],
                  sprite: 'null'
              },
             chair: {
                 dialog: [
-                    'You only have one chair because you don’t have any friends.',
+                    'You still don’t have any friends.',
                 ],
                 sprite: 'null'
             },
             spice:{
                 dialog: [
-                    'You call all your spices “girls”',
-                    'Get it?',
-                    'Like the spice girls. haha.'
+                    'SPICE GIRLS.',
+                    'HAHAHHAHAHAHAHAHAHAAHAHAHHHAHAHAHAHHA'
                          ],
                 sprite: null
             },
             fridge:{
                 dialog: [
-                    'your fridge is depressingly empty.',
-                    'You’ve been living off of canned food for 3 days.',
-                    'You might want to look somewhere else for food'
+                    'Do I have any food you ask?',
+                    'Do I have ',
+                    'ANY.',
+                    'FOOD.',
+                    'NO, I don’t have any food.',
+                    'Do you know WHY?',
+                    'Cuz you won’t give me any!',
+                    'I thought you loved me! ',
+                    'I thought we had something!',
+                    'You promised we would be together forever!',
+                    'That i’d always have food in my belly!',
+                    'All you ever do is take and leave, take and leave!!!',
+                    'Hey! Are you listening?',
+                    'Stop skipping through my words! Stop trying to leave!',
+                    'Don’t you DARE leave me!!!!',
+                    'EVERYTHING I do is for you! I feed you and give you everything i have and-'
                 ],
-                sprite: null
+                sprite: 'talkfridge'
             }, 
             sink: {
                 dialog: [
-                    'It’s connected to the bathtub.',
-                    'Which is clogged'
+                    'The sink is flooded with greenish brown water',
+                    'But you’re very thirsty.',
+                    'You drink the water.'
                 ],
                 sprite: 'null'
             },
             stove: {
                 dialog: [
-                    'You left the stove on,',
-                    'but that is your only source of heat',
-                    'You leave it on'
+                    'The fire is captivating',
+                    'You want to touch it'
                 ],
                 sprite: 'null'
             },
             counter: {
                 dialog: [
-                    'A raw egg.',
-                    'You put it in the egg cup and it’s been stuck in there ever since.',
-                    'That was 16 hours ago.',
-                    'you decide not to eat it.'
+                    'egg.',
+                    'Hey! I’m more than just an egg, buddy!',
+                    'I have a name and a dozen back at home to take care of!',
+                    'the name’s Jeggson! Drew Jeggson to be precise. Nice to meet ya!',
+                    'If you’re lookin’ for food, I’d check the fridge.',
+                    'I hear she’s an EGGcellent food holder.',
+                    'If not, talk to Sammy.',
+                    'Yea, your pet fish.',
+                    'And don’t even think about eating me, bud!',
+                    'I might give you SALMONella poisoning!'
                 ],
-                sprite: 'null'
+                sprite: 'talkjegg'
             },            
         };
 },
 update: function(){
- if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+        if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
             ptag.body.velocity.x=300;
             if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
                 ptag.animations.play('walk', 7, true);
@@ -179,15 +196,14 @@ update: function(){
         }
             
         var self = this;
-        game.physics.arcade.collide(ptag, kitchen, function(obj1, obj2) { 
+        game.physics.arcade.collide(ptag, oKitchen, function(obj1, obj2) { 
             console.log('collided', self.furnitureType(obj2.index));
             ikea = self.furnitureType(obj2.index);
         })
     
      if (ptag.x<20){
-     changeState('hallway');
+     changeState('oHallway');
      };
-    
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) &&
@@ -208,7 +224,7 @@ update: function(){
             var key = keylist[i];
             for(var j=0; j<furniture[key].length;j++){
                 var tiles = furniture[key][j];
-                map.setCollisionBetween(tiles[0],tiles[1],'kitchen');
+                map.setCollisionBetween(tiles[0],tiles[1],'oKitchen');
             }
         }
     },

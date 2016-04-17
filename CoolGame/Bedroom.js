@@ -10,8 +10,7 @@ boil.bedroom.prototype = {
         game.load.tilemap('bedroomTilemap', 'Assets/Backgrounds/bedroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('bedroomTileset', 'Assets/Backgrounds/bedroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
-//        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 147,47);
-         
+        game.load.spritesheet('shrooms','Assets/Spritesheets/shrooms.png',450,450);         
     },
     create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -45,21 +44,24 @@ boil.bedroom.prototype = {
         
     furniture = {
             desk: [
-                [166,170],
-                [136,139],
-                [151,156]
+                [136,137],
+                [151,155],
+                [166,170]
             ],
             dresser: [
                 [40,43]
             ],
             plant: [
-                [37,39]
+                [36,39]
             ],
             bed: [
                 [61,65],
                 [76,80],
                 [91,95],
-                [106,110]
+                [106,109]
+            ],
+            wedge: [
+                [110,110]
             ]
         };
         
@@ -67,7 +69,8 @@ boil.bedroom.prototype = {
 
         text = {
              desk:{
-                 dialog: ['you bought it for the novelty and have considered burning it for the heat',
+                 dialog: [
+                     'you bought it for the novelty and have considered burning it for the heat',
                 ],
                  sprite: 'null'
              },
@@ -81,16 +84,26 @@ boil.bedroom.prototype = {
                 dialog: [
                     'sometimes you look out your window, and see kids trying to throw rocks at your face.',
                          ],
-                sprite: null
+                sprite: 'null'
             },
             bed:{
                 dialog: [
                     'This quilt was from your grandma for christmas.',
                     'She died two weeks ago...',
-                    '...and you didn’t even show up to her funeral.'
+                    '...and you didn’t even show up to her funeral.',
+                    'You want to repress that memory',
+                    'You notice something at the foot of the bed.'
                 ],
-                sprite: null
+                sprite: 'null'
             }, 
+            wedge: {
+                dialog: [
+                    'You find a packet of mushrooms wedged between the mattress and the frame of the bed.',
+                    'They look old, but at this point you’re too hungry to care.',
+                    'You eat the mushrooms'
+                ],
+                sprite: 'shrooms'
+            }
             
         };
 },
@@ -142,6 +155,7 @@ update: function(){
      if (ptag.x>1500){
      changeState('hallway');
      };
+
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) &&

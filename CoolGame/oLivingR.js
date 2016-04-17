@@ -1,8 +1,8 @@
-boil.livingR = function(){};
+boil.oLivingR = function(){};
 
-var ptag, livingR, sammy, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text;
+var ptag, oLivingR, sammy, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text;
 
-boil.livingR.prototype = {
+boil.oLivingR.prototype = {
     preload: function(){
         x = 105;
         y = 1810;
@@ -23,7 +23,7 @@ boil.livingR.prototype = {
         console.log('You are in the livingR state');        
         var map = game.add.tilemap('livingRTilemap');
         map.addTilesetImage('livingRTileset');
-        livingR = map.createLayer('livingR');
+        oLivingR = map.createLayer('livingR');
         sammy = game.add.sprite(0,0,'sammy');
         sammy.animations.add('move',[0,1]);
         sammy.animations.play('move', 2, true);

@@ -1,8 +1,8 @@
-boil.hallway = function(){};
+boil.oHallway = function(){};
 
-var ptag, hallway, x, y, flip, map, furniture, textbox,ikea, lastKeyPressed,text;
+var ptag, oHallway, x, y, flip, map, furniture, textbox,ikea, lastKeyPressed;
 
-boil.hallway.prototype = {
+boil.oHallway.prototype = {
     init: function(){
         console.log(x + ' ' + y)
     },
@@ -23,10 +23,10 @@ boil.hallway.prototype = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.world.setBounds(0,0, 1500, 3000);
         //game.stage.backgroundColor = '#A80000';
-        console.log('You are in the hallway state');        
+        console.log('You are in the oHallway state');        
         var map = game.add.tilemap('hallwayTilemap');
         map.addTilesetImage('hallwayTileset');
-        hallway = map.createLayer('hallway');
+        oHallway = map.createLayer('hallway');
         ptag = game.add.sprite(x, y, 'ptag');
         
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
@@ -113,25 +113,25 @@ update: function(){
         }
             
         var self = this;
-        game.physics.arcade.collide(ptag, bedroom, function(obj1, obj2) { 
+        game.physics.arcade.collide(ptag, oHallway, function(obj1, obj2) { 
             console.log('collided', self.furnitureType(obj2.index));
             ikea = self.furnitureType(obj2.index);
         })
     
     if (ptag.x > 1475) {
         if (ptag.y<900){
-            changeState('kitchen');
+            changeState('oKitchen');
         }
         if (ptag.y>1810){
-            changeState('bathroom');
+            changeState('oBathroom');
         }
     }
     
     if (ptag.x<20 && ptag.y<1189){
-        changeState('bedroom');
+        changeState('oBedroom');
     }
     if (ptag.x<20 && ptag.y>1695){
-        changeState('livingR')
+        changeState('oLivingR')
     };
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&
@@ -153,7 +153,7 @@ update: function(){
             var key = keylist[i];
             for(var j=0; j<furniture[key].length;j++){
                 var tiles = furniture[key][j];
-                map.setCollisionBetween(tiles[0],tiles[1],'hallway');
+                map.setCollisionBetween(tiles[0],tiles[1],'oHallway');
             }
         }
     },

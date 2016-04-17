@@ -11,7 +11,7 @@ boil.bathroom.prototype = {
         game.load.image('bathroomTileset', 'Assets/Backgrounds/bathroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
 //        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 1500,470);
-        game.load.spritesheet('talkfridge','Assets/Spritesheets/talkfridge.png',450,450);
+
          
     },
     create: function(){
@@ -52,6 +52,9 @@ boil.bathroom.prototype = {
             toilet: [
                 [49, 50]
             ],
+            mildew: [
+                [36,36]
+            ],
             sink: [
                 [38,39]
             ],
@@ -72,6 +75,13 @@ boil.bathroom.prototype = {
                     'It clogged the toilet and you couldn’t get enough money to pay for a plumber.'
                 ],
                 sprite: 'null'     //'talkfrige'
+            },
+            mildew:{
+                    dialog: [
+                    'the only living (?) thing in this room.',
+                    'Your soul died a long time ago'
+                ],
+                 sprite: 'null'
             },
             sink:{
                 dialog: [

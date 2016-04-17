@@ -1,16 +1,17 @@
-boil.livingR = function(){};
+boil.oBathroom = function(){};
 
-var ptag, livingR, sammy, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text;
-
-boil.livingR.prototype = {
+var ptag, oBathroom, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text;
+//ikea is whether or not you're near furniture
+boil.oBathroom.prototype = {
     preload: function(){
-        x = 105;
-        y = 1810;
+        x = 1370;
+        y = 1945;
         flip = 0.45;
-        game.load.tilemap('livingRTilemap', 'Assets/Backgrounds/livingRTilemap.json', null,Phaser.Tilemap.TILED_JSON);
-        game.load.image('livingRTileset', 'Assets/Backgrounds/livingRTileset.png');
+        game.load.tilemap('bathroomTilemap', 'Assets/Backgrounds/bathroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
+        game.load.image('bathroomTileset', 'Assets/Backgrounds/bathroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
-        game.load.spritesheet('sammy','Assets/Spritesheets/Sammy.png',1400,940);
+//        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 1500,470);
+        game.load.spritesheet('talkfridge','Assets/Spritesheets/talkfridge.png',450,450);
          
     },
     create: function(){
@@ -18,104 +19,92 @@ boil.livingR.prototype = {
         enter.onDown.add(changeText, this);
         
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.world.setBounds(0,0,1400,2100);
+        game.world.setBounds(0,0, 1500, 1500);
         //game.stage.backgroundColor = '#A80000';
-        console.log('You are in the livingR state');        
-        var map = game.add.tilemap('livingRTilemap');
-        map.addTilesetImage('livingRTileset');
-        livingR = map.createLayer('livingR');
-        sammy = game.add.sprite(0,0,'sammy');
-        sammy.animations.add('move',[0,1]);
-        sammy.animations.play('move', 2, true);
-        ptag = game.add.sprite(1295,555, 'ptag');
+        console.log('You are in the oBathroom state');        
+        map = game.add.tilemap('bathroomTilemap');
+        map.addTilesetImage('bathroomTileset');
+        oBathroom = map.createLayer('bathroom');
+        ptag = game.add.sprite(game.world.centerX-650, 1065, 'ptag');
         
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
         ptag.animations.add('walkup',[8,9,10,11,]);
         
         game.physics.enable(ptag);
-        ptag.scale.setTo(.45,.45);
+        ptag.scale.setTo(-.45,.45);
         ptag.anchor.setTo(0.5);
-        game.camera.follow(ptag);
+
+        map.setCollisionBetween(1,30,'bathroom'); //ceiling
+        map.setCollisionBetween(196,225,'bathroom') //bottom
         
-        map.setCollisionBetween(1,14,'livingR');
-        map.setCollisionBetween(15,28,'livingR');//ceiling
+        map.setCollision(31,46, 'bathroom');
+        map.setCollision(61,76,'bathroom');
+        map.setCollision(91,'bathroom'); //left
         
-        map.setCollision(57,71,'livingR');
-        map.setCollision(85,99,'livingR');
-        map.setCollision(113,127,'livingR');
-        map.setCollision(141,155,'livingR');
-        map.setCollision(169,183,'livingR');
-        map.setCollision(197,211,'livingR');//left
+        map.setCollision(90,106,'bathroom');
         
-        //map.setCollisionBetween(122,126,'livingR');
-        map.setCollisionBetween(136,140,'livingR');//entrance bit
-        map.setCollisionBetween(150,154,'livingR');
-//        map.setCollisionBetween(164,168,'livingR'); //TV
-        map.setCollision(210,224,'livingR'); //right
+        map.setCollision(135,'bathroom');
+        map.setCollision(150,165,'bathroom');
+        map.setCollision(180,195,'bathroom');
+        map.setCollision(210,225,'bathroom');
         
-        //map.setCollisionBetween(29,37,'livingR');
-//        map.setCollisionBetween(42,50,'livingR')//shelf&sammy
-//        
-//        map.setCollisionBetween(253,258,'livingR');
-//        map.setCollisionBetween(245,252,'livingR');//bottom    
-        
-          furniture = {
-            shelf: [
-                [42, 46]
+        furniture = {
+            toilet: [
+                [49, 50]
             ],
-            sammy: [
-                [47, 50]
+            mildew: [
+                [36,36]
             ],
-            TV: [
-                [164,168]
+            sink: [
+                [38,39]
             ],
-            table: [
-                [253,258]
-            ],
-            couch: [
-                [245,252]
+            bath: [
+                [42,45],
+                [57,60],
+                [72,75],
+                [87,90],
+                [102,105]
             ]
         };
         this.setupFurniture()
-   text = {
-            shelf: {
+        // \n = new line
+        text = {
+            toilet: {
                 dialog: [
-                    'a collection of books you got from your mom, two pictures of you and your parents, and an old track and field trophy.',
+                    'You smell a familiar sour scent.',
+                    'it’s your regurgitation from last night’s party...',
+                    '...that no one came to.'
                 ],
                 sprite: 'null'     //'talkfrige'
             },
-            sammy:{
+            mildew:{
+                    dialog: [
+                    'you love this mildew.',
+                    'He’s a really fun-guy', //cue "bdum tsh" followed by laughter
+                    'good one!' 
+                ],
+                 sprite: 'null'
+            },
+            sink:{
                 dialog: [
-                    'His name is Sammy. All he does is blow bubbles and swim.',                
+                    'You look worse than before.',
+                    'How is that even possible?',
+                    'Just kidding!',
+                    'not.'  
                          ],
                 sprite: 'null'
             },
-            TV:{
+            bath:{
                 dialog: [
-                    'your bathtub doesn’t work.',
-                    'The pipes are connected to your toilet.',
-                    'Which clogged.'
+                    'once you went in here and you found the lost city of Atlantis.'
                 ],
                 sprite: 'null'
-            },
-            table: {
-                dialog: [
-                    'you are actually extremely allergic to the pollen of this plant in particular.',
-                    'Hence the tissues.'
-                ],
-                sprite: 'null' 
-            },
-            couch: {
-                 dialog: [
-                     'The couch is only for show.',
-                     'It’s actually extremely uncomfortable to sit on'
-                 ],
-                sprite: 'null'
-   },
+            }, 
         };
     },
-update: function(){
-    if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+    
+    update: function(){
+        if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
             ptag.body.velocity.x=300;
             if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
                 ptag.animations.play('walk', 7, true);
@@ -152,16 +141,18 @@ update: function(){
         else{
             ptag.body.velocity.y=0;
         }
-            
+        
         var self = this;
-        game.physics.arcade.collide(ptag, bedroom, function(obj1, obj2) { 
+        game.physics.arcade.collide(ptag,oBathroom, function(obj1, obj2) { 
             console.log('collided', self.furnitureType(obj2.index));
             ikea = self.furnitureType(obj2.index);
         })
-     if (ptag.x> 1350){
-     changeState('hallway');
-     };
-     if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
+    
+
+         if (ptag.x< 15){
+            changeState('oHallway');  
+         };
+        if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
@@ -175,13 +166,14 @@ update: function(){
             } 
         }
     },
+    
     setupFurniture: function() {
         var keylist = Object.keys(furniture);
         for(var i=0; i<keylist.length; i++){
             var key = keylist[i];
             for(var j=0; j<furniture[key].length;j++){
                 var tiles = furniture[key][j];
-                map.setCollisionBetween(tiles[0],tiles[1],'livingR');
+                map.setCollisionBetween(tiles[0],tiles[1],'oBathroom');
             }
         }
     },
@@ -197,5 +189,8 @@ update: function(){
             }
         }
          
-     }
+     },
+
 };
+    
+ 
