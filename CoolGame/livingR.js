@@ -1,6 +1,6 @@
 boil.livingR = function(){};
 
-var ptag, livingR, sammy, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text;
+var ptag, livingR, sammy, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text, pop, sound;
 
 boil.livingR.prototype = {
     preload: function(){
@@ -12,7 +12,9 @@ boil.livingR.prototype = {
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         game.load.spritesheet('sammy','Assets/Spritesheets/Sammy.png',1400,940);
          
+        game.load.audio('pop', 'assets/Sounds/In_Albany_New_York.mp3');
     },
+    
     create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         enter.onDown.add(changeText, this);
@@ -21,7 +23,7 @@ boil.livingR.prototype = {
         game.world.setBounds(0,0,1400,2100);
         //game.stage.backgroundColor = '#A80000';
         console.log('You are in the livingR state');        
-        var map = game.add.tilemap('livingRTilemap');
+        map = game.add.tilemap('livingRTilemap');
         map.addTilesetImage('livingRTileset');
         livingR = map.createLayer('livingR');
         sammy = game.add.sprite(0,0,'sammy');
@@ -36,6 +38,7 @@ boil.livingR.prototype = {
         ptag.scale.setTo(.45,.45);
         ptag.anchor.setTo(0.5);
         game.camera.follow(ptag);
+        
         
         map.setCollisionBetween(1,14,'livingR');
         map.setCollisionBetween(15,28,'livingR');//ceiling
@@ -113,7 +116,11 @@ boil.livingR.prototype = {
                 sprite: 'null'
    },
         };
+        pop = game.add.audio('pop');
+        pop.play();
+        //game.sound.setDecodedCallback(pop, start, this);
     },
+    
 update: function(){
     if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
             ptag.body.velocity.x=300;
