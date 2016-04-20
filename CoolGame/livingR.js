@@ -119,6 +119,7 @@ boil.livingR.prototype = {
         pop = game.add.audio('pop');
         pop.play();
         //game.sound.setDecodedCallback(pop, start, this);
+        //pop.stop();
     },
     
 update: function(){
@@ -166,6 +167,7 @@ update: function(){
             ikea = self.furnitureType(obj2.index);
         })
      if (ptag.x> 1350){
+         pop.stop();
      changeState('hallway');
      };
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
