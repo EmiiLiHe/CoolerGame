@@ -22,7 +22,7 @@ boil.kitchen.prototype = {
         game.world.setBounds(0,0, 1500,1500);
         //game.stage.backgroundColor = '#A80000';
         console.log('You are in the kitchen state');        
-        var map = game.add.tilemap('kitchenTilemap');
+        map = game.add.tilemap('kitchenTilemap');
         map.addTilesetImage('kitchenTileset');
         kitchen = map.createLayer('kitchen');
         ptag = game.add.sprite(110,1170, 'ptag');
@@ -89,13 +89,13 @@ boil.kitchen.prototype = {
                      'The plate reminds you of yourself.',
                       'Better look somewhere else...'
                 ],
-                 sprite: 'null'
+                 sprite: null
              },
             chair: {
                 dialog: [
                     'You only have one chair because you don’t have any friends.',
                 ],
-                sprite: 'null'
+                sprite: null
             },
             spice:{
                 dialog: [
@@ -118,7 +118,7 @@ boil.kitchen.prototype = {
                     'It’s connected to the bathtub.',
                     'Which is clogged'
                 ],
-                sprite: 'null'
+                sprite: null
             },
             stove: {
                 dialog: [
@@ -126,7 +126,7 @@ boil.kitchen.prototype = {
                     'but that is your only source of heat',
                     'You leave it on'
                 ],
-                sprite: 'null'
+                sprite: null
             },
             counter: {
                 dialog: [
@@ -135,7 +135,7 @@ boil.kitchen.prototype = {
                     'That was 16 hours ago.',
                     'you decide not to eat it.'
                 ],
-                sprite: 'null'
+                sprite: null
             },            
         };
 },
@@ -208,6 +208,7 @@ update: function(){
             var key = keylist[i];
             for(var j=0; j<furniture[key].length;j++){
                 var tiles = furniture[key][j];
+                console.log(tiles[0], tiles[1])
                 map.setCollisionBetween(tiles[0],tiles[1],'kitchen');
             }
         }

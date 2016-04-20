@@ -25,11 +25,15 @@ boil.Menu.prototype = {
 
 function changeText(){
         console.log('ikea', ikea);
-        if(textbox && wordIndex < text[ikea].dialog.length-1){
+        if(textbox && ikea && wordIndex < text[ikea].dialog.length-1){
            wordIndex++ 
            var newText = text[ikea].dialog[wordIndex]
            words.setText(newText)
         }
+        else if(textbox && ikea && wordIndex == text[ikea].dialog.length-1 && text[ikea].stateChange){
+                changeState(text[ikea].stateChange)
+        }
+       
         else if(textbox){
             textbox.destroy();
             textbox=null;
@@ -52,6 +56,7 @@ function changeText(){
             textbox.animations.play('float',5,true);  
             
             var style = {
+                fontSize: '40px',
                 fill : 'white',
                 wordWrap : true,
                 wordWrapWidth : textbox.width-(2*textMargin)

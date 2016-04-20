@@ -162,7 +162,7 @@ update: function(){
         }
             
         var self = this;
-        game.physics.arcade.collide(ptag, bedroom, function(obj1, obj2) { 
+        game.physics.arcade.collide(ptag, livingR, function(obj1, obj2) { 
             console.log('collided', self.furnitureType(obj2.index));
             ikea = self.furnitureType(obj2.index);
         })

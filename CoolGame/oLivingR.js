@@ -21,7 +21,7 @@ boil.oLivingR.prototype = {
         game.world.setBounds(0,0,1400,2100);
         //game.stage.backgroundColor = '#A80000';
         console.log('You are in the livingR state');        
-        var map = game.add.tilemap('livingRTilemap');
+        map = game.add.tilemap('livingRTilemap');
         map.addTilesetImage('livingRTileset');
         oLivingR = map.createLayer('livingR');
         sammy = game.add.sprite(0,0,'sammy');
@@ -159,7 +159,7 @@ update: function(){
             ikea = self.furnitureType(obj2.index);
         })
      if (ptag.x> 1350){
-     changeState('hallway');
+     changeState('oHallway');
      };
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&

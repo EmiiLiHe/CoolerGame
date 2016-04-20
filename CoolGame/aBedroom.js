@@ -1,8 +1,8 @@
-boil.bedroom = function(){};
+boil.aBedroom = function(){};
 
-var ptag, bedroom, x, y, flip, map, furniture, textbox,ikea,text, lastKeyPressed;
+var ptag, aBedroom, x, y, flip, map, furniture, textbox,ikea,text, lastKeyPressed;
 
-boil.bedroom.prototype = {
+boil.aBedroom.prototype = {
     preload: function(){
         x = 90;
         y = 1100;
@@ -10,7 +10,8 @@ boil.bedroom.prototype = {
         game.load.tilemap('bedroomTilemap', 'Assets/Backgrounds/bedroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('bedroomTileset', 'Assets/Backgrounds/bedroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
-        game.load.spritesheet('shrooms','Assets/Spritesheets/shrooms.png',450,450);         
+//        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 147,47);
+         
     },
     create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -19,19 +20,19 @@ boil.bedroom.prototype = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.world.setBounds(0,0, 1500,1500);
         //game.stage.backgroundColor = '#A80000';
-        console.log('You are in the bedroom state');        
+        console.log('You are in the aBedroom state');        
         map = game.add.tilemap('bedroomTilemap');
         map.addTilesetImage('bedroomTileset');
-        bedroom = map.createLayer('bedroom');
-        ptag = game.add.sprite(game.world.centerX+650,game.world.centerY+400, 'ptag');
-        
+        aBedroom = map.createLayer('bedroom');
+        ptag = game.add.sprite(856,870, 'ptag');
+
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
         ptag.animations.add('walkup',[8,9,10,11,]);
         
         game.physics.enable(ptag);
         ptag.scale.setTo(.45,.45);
         ptag.anchor.setTo(0.5);
-        
+        ptag.angle = 90 
         map.setCollisionBetween(1,45,'bedroom'); //ceiling
         map.setCollisionBetween(211,225,'bedroom') //bottom
         
@@ -44,9 +45,9 @@ boil.bedroom.prototype = {
         
     furniture = {
             desk: [
-                [136,137],
-                [151,155],
-                [166,170]
+                [166,170],
+                [136,139],
+                [151,156]
             ],
             dresser: [
                 [40,43]
@@ -58,10 +59,7 @@ boil.bedroom.prototype = {
                 [61,65],
                 [76,80],
                 [91,95],
-                [106,109]
-            ],
-            wedge: [
-                [110,110]
+                [106,110]
             ]
         };
         
@@ -70,94 +68,80 @@ boil.bedroom.prototype = {
         text = {
              desk:{
                  dialog: [
-                     'you bought it for the novelty and have considered burning it for the heat',
+                     'You stare at the desk for 42 seconds.',
+                     'You’re getting desperate for heat.'
                 ],
                  sprite: 'null'
              },
             dresser: {
                 dialog: [
-                    'just clothes',
+                    'When you don’t come in here to cry, you sometimes see a field of mushrooms and prance among them',
                 ],
                 sprite: 'null'     //'talkfrige'
             },
             plant:{
                 dialog: [
-                    'sometimes you look out your window, and see kids trying to throw rocks at your face.',
+                    'This flower is your best friend.',
                          ],
                 sprite: 'null'
             },
             bed:{
                 dialog: [
-                    'This quilt was from your grandma for christmas.',
-                    'She died two weeks ago...',
-                    '...and you didn’t even show up to her funeral.',
-                    'You want to repress that memory',
-                    'You notice something at the foot of the bed.'
+                    'Sometimes when you lie down you feel like you’re on a cloud in the sky and there are butterflies and angels everywhere',
                 ],
                 sprite: 'null'
             }, 
-            wedge: {
-                dialog: [
-                    'You find a packet of mushrooms wedged between the mattress and the frame of the bed.',
-                    'They look old, but at this point you’re too hungry to care.',
-                    'You eat the mushrooms'
-                ],
-                sprite: 'shrooms',
-                stateChange: 'oBedroom'
-                
-            }
             
         };
 },
 update: function(){
-        if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-            ptag.body.velocity.x=300;
-            if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-                ptag.animations.play('walk', 7, true);
+            if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+                ptag.body.velocity.x=300;
+                if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+                    ptag.animations.play('walk', 7, true);
+                }
+                ptag.scale.setTo(-.45,0.45);
+                ikea = null;
+                lastKeyPressed = 'right';
+               }
+            else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+                ptag.body.velocity.x=-300;
+                if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+                    ptag.animations.play('walk', 7, true);
+                }
+                ptag.scale.setTo(.45,.45);
+                ikea = null;
+                lastKeyPressed = 'left';
+               }
+            else{
+                ptag.animations.stop('walk');
+                ptag.body.velocity.x=0;
             }
-            ptag.scale.setTo(-.45,0.45);
-            ikea = null;
-            lastKeyPressed = 'right';
-           }
-        else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
-            ptag.body.velocity.x=-300;
-            if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-                ptag.animations.play('walk', 7, true);
+            if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
+                ptag.body.velocity.y =-300;
+                ptag.animations.play('walkup',7,true);   
+                ikea = null;
+                lastKeyPressed = 'up';
             }
-            ptag.scale.setTo(.45,.45);
-            ikea = null;
-            lastKeyPressed = 'left';
-           }
-        else{
-            ptag.animations.stop('walk');
-            ptag.body.velocity.x=0;
+            else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+                ptag.body.velocity.y =300;
+                ptag.animations.play('walk',7,true);
+                ikea = null;
+                lastKeyPressed = 'down';
+            }
+            else{
+                ptag.body.velocity.y=0;
+            }
         }
-        if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
-            ptag.body.velocity.y =-300;
-            ptag.animations.play('walkup',7,true);   
-            ikea = null;
-            lastKeyPressed = 'up';
-        }
-        else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
-            ptag.body.velocity.y =300;
-            ptag.animations.play('walk',7,true);
-            ikea = null;
-            lastKeyPressed = 'down';
-        }
-        else{
-            ptag.body.velocity.y=0;
-        }
-            
         var self = this;
-        game.physics.arcade.collide(ptag, bedroom, function(obj1, obj2) { 
+        game.physics.arcade.collide(ptag, aBedroom, function(obj1, obj2) { 
             console.log('collided', self.furnitureType(obj2.index));
             ikea = self.furnitureType(obj2.index);
         })
     
      if (ptag.x>1500){
-     changeState('hallway');
+     changeState('oHallway');
      };
-
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.DOWN) &&
             !game.input.keyboard.isDown(Phaser.Keyboard.RIGHT) &&
@@ -178,7 +162,7 @@ update: function(){
             var key = keylist[i];
             for(var j=0; j<furniture[key].length;j++){
                 var tiles = furniture[key][j];
-                map.setCollisionBetween(tiles[0],tiles[1],'bedroom');
+                map.setCollisionBetween(tiles[0],tiles[1],'aBedroom');
             }
         }
     },

@@ -22,7 +22,7 @@ boil.oKitchen.prototype = {
         game.world.setBounds(0,0, 1500,1500);
         //game.stage.backgroundColor = '#A80000';
         console.log('You are in the oKitchen state');        
-        var map = game.add.tilemap('kitchenTilemap');
+        map = game.add.tilemap('kitchenTilemap');
         map.addTilesetImage('kitchenTileset');
         oKitchen = map.createLayer('kitchen');
         ptag = game.add.sprite(110,1170, 'ptag');

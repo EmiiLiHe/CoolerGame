@@ -1,6 +1,6 @@
 boil.oBedroom = function(){};
 
-var ptag, oBedroom, x, y, flip, map, furniture, textbox,ikea,text, lastKeyPressed;
+var ptag, oBedroom, x, y, flip, map, furniture, textbox,ikea,text, lastKeyPressed, hasAwoken=false;
 
 boil.oBedroom.prototype = {
     preload: function(){
@@ -24,15 +24,19 @@ boil.oBedroom.prototype = {
         map = game.add.tilemap('bedroomTilemap');
         map.addTilesetImage('bedroomTileset');
         oBedroom = map.createLayer('bedroom');
-        ptag = game.add.sprite(game.world.centerX+650,game.world.centerY+400, 'ptag');
-        
+        if(!hasAwoken){
+            ptag = game.add.sprite(856,870, 'ptag');
+        }
+        else ptag = game.add.sprite(1419,1188, 'ptag')
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
         ptag.animations.add('walkup',[8,9,10,11,]);
         
         game.physics.enable(ptag);
         ptag.scale.setTo(.45,.45);
         ptag.anchor.setTo(0.5);
-        
+        if(!hasAwoken){
+            ptag.angle = 90 
+        }
         map.setCollisionBetween(1,45,'bedroom'); //ceiling
         map.setCollisionBetween(211,225,'bedroom') //bottom
         
@@ -95,44 +99,50 @@ boil.oBedroom.prototype = {
         };
 },
 update: function(){
-        if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
-            ptag.body.velocity.x=300;
-            if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-                ptag.animations.play('walk', 7, true);
+        if(ptag.angle>0){
+            ptag.angle--
+            ptag.x-=2
+        }
+        else {
+            hasAwoken=true 
+            if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
+                ptag.body.velocity.x=300;
+                if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+                    ptag.animations.play('walk', 7, true);
+                }
+                ptag.scale.setTo(-.45,0.45);
+                ikea = null;
+                lastKeyPressed = 'right';
+               }
+            else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
+                ptag.body.velocity.x=-300;
+                if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
+                    ptag.animations.play('walk', 7, true);
+                }
+                ptag.scale.setTo(.45,.45);
+                ikea = null;
+                lastKeyPressed = 'left';
+               }
+            else{
+                ptag.animations.stop('walk');
+                ptag.body.velocity.x=0;
             }
-            ptag.scale.setTo(-.45,0.45);
-            ikea = null;
-            lastKeyPressed = 'right';
-           }
-        else if(game.input.keyboard.isDown(Phaser.Keyboard.LEFT)){
-            ptag.body.velocity.x=-300;
-            if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
-                ptag.animations.play('walk', 7, true);
+            if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
+                ptag.body.velocity.y =-300;
+                ptag.animations.play('walkup',7,true);   
+                ikea = null;
+                lastKeyPressed = 'up';
             }
-            ptag.scale.setTo(.45,.45);
-            ikea = null;
-            lastKeyPressed = 'left';
-           }
-        else{
-            ptag.animations.stop('walk');
-            ptag.body.velocity.x=0;
+            else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
+                ptag.body.velocity.y =300;
+                ptag.animations.play('walk',7,true);
+                ikea = null;
+                lastKeyPressed = 'down';
+            }
+            else{
+                ptag.body.velocity.y=0;
+            }
         }
-        if(game.input.keyboard.isDown(Phaser.Keyboard.UP)){
-            ptag.body.velocity.y =-300;
-            ptag.animations.play('walkup',7,true);   
-            ikea = null;
-            lastKeyPressed = 'up';
-        }
-        else if(game.input.keyboard.isDown(Phaser.Keyboard.DOWN)){
-            ptag.body.velocity.y =300;
-            ptag.animations.play('walk',7,true);
-            ikea = null;
-            lastKeyPressed = 'down';
-        }
-        else{
-            ptag.body.velocity.y=0;
-        }
-            
         var self = this;
         game.physics.arcade.collide(ptag, oBedroom, function(obj1, obj2) { 
             console.log('collided', self.furnitureType(obj2.index));

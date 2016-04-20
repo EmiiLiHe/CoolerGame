@@ -24,7 +24,7 @@ boil.oHallway.prototype = {
         game.world.setBounds(0,0, 1500, 3000);
         //game.stage.backgroundColor = '#A80000';
         console.log('You are in the oHallway state');        
-        var map = game.add.tilemap('hallwayTilemap');
+        map = game.add.tilemap('hallwayTilemap');
         map.addTilesetImage('hallwayTileset');
         oHallway = map.createLayer('hallway');
         ptag = game.add.sprite(x, y, 'ptag');

@@ -24,7 +24,7 @@ boil.hallway.prototype = {
         game.world.setBounds(0,0, 1500, 3000);
         //game.stage.backgroundColor = '#A80000';
         console.log('You are in the hallway state');        
-        var map = game.add.tilemap('hallwayTilemap');
+        map = game.add.tilemap('hallwayTilemap');
         map.addTilesetImage('hallwayTileset');
         hallway = map.createLayer('hallway');
         ptag = game.add.sprite(x, y, 'ptag');
@@ -116,7 +116,8 @@ update: function(){
         game.physics.arcade.collide(ptag, bedroom, function(obj1, obj2) { 
             console.log('collided', self.furnitureType(obj2.index));
             ikea = self.furnitureType(obj2.index);
-        })
+        }
+                                   )
     
     if (ptag.x > 1475) {
         if (ptag.y<900){
