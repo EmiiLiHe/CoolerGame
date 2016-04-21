@@ -11,7 +11,11 @@ boil.oLivingR.prototype = {
         game.load.image('livingRTileset', 'Assets/Backgrounds/livingRTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         game.load.spritesheet('sammy','Assets/Spritesheets/Sammy.png',1400,940);
-         
+        game.load.spritesheet('talksammy','Assets/Spritesheets/talksammy.png',450,450);
+        
+        game.load.image('topLayer','Assets/Backgrounds/LivingRtop.png',1400,2100);
+        game.load.image('wall','Assets/Backgrounds/wall.png',1400,2100);
+
     },
     create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -20,7 +24,7 @@ boil.oLivingR.prototype = {
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.world.setBounds(0,0,1400,2100);
         //game.stage.backgroundColor = '#A80000';
-        console.log('You are in the livingR state');        
+        console.log('You are in the oLivingR state');        
         map = game.add.tilemap('livingRTilemap');
         map.addTilesetImage('livingRTileset');
         oLivingR = map.createLayer('livingR');
@@ -28,9 +32,11 @@ boil.oLivingR.prototype = {
         sammy.animations.add('move',[0,1]);
         sammy.animations.play('move', 2, true);
         ptag = game.add.sprite(1295,555, 'ptag');
-        
+        game.add.sprite(0,0,'topLayer');
+        game.add.sprite(0,0,'wall');
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
         ptag.animations.add('walkup',[8,9,10,11,]);
+        
         
         game.physics.enable(ptag);
         ptag.scale.setTo(.45,.45);
@@ -47,17 +53,10 @@ boil.oLivingR.prototype = {
         map.setCollision(169,183,'livingR');
         map.setCollision(197,211,'livingR');//left
         
-        //map.setCollisionBetween(122,126,'livingR');
         map.setCollisionBetween(136,140,'livingR');//entrance bit
         map.setCollisionBetween(150,154,'livingR');
-//        map.setCollisionBetween(164,168,'livingR'); //TV
+
         map.setCollision(210,224,'livingR'); //right
-        
-        //map.setCollisionBetween(29,37,'livingR');
-//        map.setCollisionBetween(42,50,'livingR')//shelf&sammy
-//        
-//        map.setCollisionBetween(253,258,'livingR');
-//        map.setCollisionBetween(245,252,'livingR');//bottom    
         
           furniture = {
             shelf: [
@@ -74,44 +73,74 @@ boil.oLivingR.prototype = {
             ],
             couch: [
                 [245,252]
+            ],
+            lamp: [
+                [183,184]
             ]
+              
         };
         this.setupFurniture()
    text = {
             shelf: {
                 dialog: [
-                    'a collection of books you got from your mom, two pictures of you and your parents, and an old track and field trophy.',
+                    'You miss your mom and dad.',
+                    'You wish you could be wherever they are...',
+                    '...maybe you can be.'
                 ],
                 sprite: null     //'talkfrige'
             },
             sammy:{
                 dialog: [
-                    'His name is Sammy. All he does is blow bubbles and swim.',                
+                    'Oh hi, friend.',
+                    'Because that’s what we are.',
+                    'Friends. :)',
+                    'Why don’t you look around?',
+                    'Oh, you want more food? Maybe try the bathroom then.',
+                    'It’s okay, I’ll just stay here.',
+                    'All alone.',
+                    'And wait for you...',
+                    'It seems that obviously those stupid mushrooms are more important to you than hanging out with your bestest pal',
+                    'So of course you’d just abandon me and leave me to swim here all by myself....',
+                    'That’s alright! I can just talk to myself, no big deal...',
+                    'I have a reflection for a reason, right?',
+                    'Yea... Will Dew the Mildew might know where to find some.',
+                    'He knows a lot,',
+                    'but not as much as me!',
                          ],
-                sprite: null
+                sprite: 'talksammy'
             },
             TV:{
                 dialog: [
-                    'your bathtub doesn’t work.',
-                    'The pipes are connected to your toilet.',
-                    'Which clogged.'
+                    'It’s stickier than usual',
+                    'The screen seems to be displaying static',
+                    'but the TV isn’t turned on...',
+                    'eh, maybe it’s just your imagination.',
+                    'you decide to ignore it'
                 ],
                 sprite: null
             },
             table: {
                 dialog: [
-                    'you are actually extremely allergic to the pollen of this plant in particular.',
-                    'Hence the tissues.'
+                    'This plant smells amaaaaazing',
+                    'ACHOO!'
                 ],
                 sprite: null 
             },
             couch: {
                  dialog: [
-                     'The couch is only for show.',
-                     'It’s actually extremely uncomfortable to sit on'
+                     'Sleeping on this couch reminds you of the time you had to sleep in a cardboard box because you forgot your keys.',
+                     'And the next day you found out they were in your pocket the whole time.',
+                     'The box was still more comfortable than this couch.'
+                 ],
+                 sprite: null
+            },
+            lamp: {
+                 dialog:[
+                     'This lamp is the LIGHT OF YOUR LIFE',
+                     'HAHAHAHAHAHAHA'
                  ],
                 sprite: null
-   },
+            },
         };
     },
 update: function(){

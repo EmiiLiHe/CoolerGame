@@ -43,25 +43,21 @@ boil.oHallway.prototype = {
    
         map.setCollisionBetween(1,15,'hallway');
         map.setCollisionBetween(22,24,'hallway');
-        
-        map.setCollisionBetween(1,4,'hallway');
-        map.setCollisionBetween(16,20,'hallway');
-        map.setCollisionBetween(31,35,'hallway');
-        map.setCollisionBetween(46,50,'hallway');
-        map.setCollisionBetween(61,65,'hallway');
-        map.setCollisionBetween(76,80,'hallway');
-        map.setCollisionBetween(91,95,'hallway');
+        map.setCollision(20,35,'hallway'),
+        map.setCollision(50,65,'hallway'),
+        map.setCollision(76,80,'hallway'),
+        map.setCollision(95,'hallway'),
         map.setCollisionBetween(106,110,'hallway');
        
-        map.setCollisionBetween(211,214,'hallway');
-        map.setCollisionBetween(316,319,'hallway');
+        map.setCollisionBetween(211,215,'hallway');
+        map.setCollisionBetween(316,320,'hallway');
         map.setCollisionBetween(436,450,'hallway');
-        map.setCollision(334,349,'hallway');
-        map.setCollision(364,379,'hallway');
-        map.setCollision(394,409,'hallway');
+        map.setCollision(335,350,'hallway');
+        map.setCollision(365,380,'hallway');
+        map.setCollision(395,410,'hallway');
         
         map.setCollision(12,27,'hallway');//right side
-        map.setCollision(42,'hallway');
+        map.setCollision(42,57, 'hallway');
         map.setCollisionBetween(87,90,'hallway');
         
         map.setCollisionBetween(177,180,'hallway');
@@ -72,6 +68,23 @@ boil.oHallway.prototype = {
         map.setCollision(357,372,'hallway');
         map.setCollision(387,432,'hallway');
         
+        furniture = {
+            plant: [
+                [22,24]
+            ]
+        };
+   this.setupFurniture()
+        text = {
+            plant: {
+                dialog: [
+                    'You REALLY like this painting.',
+                    'Sometimes if you look hard enough you’re IN the painting itself.',
+                    'Pretty trippy stuff!'
+                ],
+                sprite: null    
+            },
+        
+        };
 },
 update: function(){
                 if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){

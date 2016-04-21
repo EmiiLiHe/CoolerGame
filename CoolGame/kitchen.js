@@ -42,9 +42,7 @@ boil.kitchen.prototype = {
         map.setCollision(365,395,'kitchen');
         map.setCollision(425,455,'kitchen'); 
         map.setCollisionBetween(481,485, 'kitchen');   //left
-       // map.setCollisionBetween(185,198,'kitchen'); // table & chair
-       //map.setCollisionBetween(146,150,'kitchen');//spice
-        //map.setCollisionBetween(524,540,'kitchen');//counters
+
         
         map.setCollision(30,60,'kitchen');
         map.setCollision(90,120,'kitchen');

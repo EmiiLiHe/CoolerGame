@@ -13,7 +13,7 @@ boil.oBathroom.prototype = {
 //        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 1500,470);
         game.load.spritesheet('talkfridge','Assets/Spritesheets/talkfridge.png',450,450);
         game.load.spritesheet('mildew','Assets/Spritesheets/mildew.png',450,450);
-         
+        game.load.spritesheet('tshrooms','Assets/Spritesheets/tshrooms.png',450,450);
     },
     create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -51,10 +51,10 @@ boil.oBathroom.prototype = {
         
         furniture = {
             toilet: [
-                [49]
+                [64,64]
             ],
             mushrooms:[
-                [50]
+                [50,50]
             ],
             mildew: [
                 [36,36]
@@ -88,8 +88,9 @@ boil.oBathroom.prototype = {
                     'They’re filthy, but at this point you don’t care. You’ve been craving for more ever since you left the bedroom.',
                     'You scarf it down greedily.'
                 ],
-                sprite: null
-            }
+                sprite: 'tshrooms',
+                stateChange: 'GameOver'
+            },
             mildew:{
                 dialog: [
                     ' ‘you love this mildew.’ ',

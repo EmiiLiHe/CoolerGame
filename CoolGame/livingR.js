@@ -12,6 +12,7 @@ boil.livingR.prototype = {
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         game.load.spritesheet('sammy','Assets/Spritesheets/Sammy.png',1400,940);
         game.load.image('topLayer','Assets/Backgrounds/LivingRtop.png',1400,2100);
+        game.load.image('wall','Assets/Backgrounds/wall.png',1400,2100);
          
         game.load.audio('pop', 'assets/Sounds/In_Albany_New_York.mp3');
     },
@@ -32,6 +33,7 @@ boil.livingR.prototype = {
         sammy.animations.play('move', 2, true);
         ptag = game.add.sprite(1295,555, 'ptag');
         game.add.sprite(0,0,'topLayer');
+        game.add.sprite(0,0,'wall');
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
         ptag.animations.add('walkup',[8,9,10,11,]);
         
@@ -51,17 +53,10 @@ boil.livingR.prototype = {
         map.setCollision(169,183,'livingR');
         map.setCollision(197,211,'livingR');//left
         
-        //map.setCollisionBetween(122,126,'livingR');
+
         map.setCollisionBetween(136,140,'livingR');//entrance bit
         map.setCollisionBetween(150,154,'livingR');
-//        map.setCollisionBetween(164,168,'livingR'); //TV
         map.setCollision(210,224,'livingR'); //right
-        
-        //map.setCollisionBetween(29,37,'livingR');
-//        map.setCollisionBetween(42,50,'livingR')//shelf&sammy
-//        
-//        map.setCollisionBetween(253,258,'livingR');
-//        map.setCollisionBetween(245,252,'livingR');//bottom    
         
           furniture = {
             shelf: [
@@ -78,6 +73,9 @@ boil.livingR.prototype = {
             ],
             couch: [
                 [245,252]
+            ],
+            lamp: [
+                [183,184]
             ]
         };
         this.setupFurniture()
@@ -114,7 +112,13 @@ boil.livingR.prototype = {
                      'It’s actually extremely uncomfortable to sit on'
                  ],
                 sprite: null
-   },
+            },
+            lamp: {
+                dialog:[
+                     'Definitely not brighter than your future :)'
+                ],
+                sprite: null
+            },
         };
         pop = game.add.audio('pop');
         pop.play();

@@ -82,6 +82,8 @@ boil.oBedroom.prototype = {
             dresser: {
                 dialog: [
                     'When you don’t come in here to cry, you sometimes see a field of mushrooms and prance among them',
+                    'The thought of mushrooms make you salivate',
+                    'Maybe the kitchen will have some?'
                 ],
                 sprite: null     //'talkfrige'
             },
@@ -94,6 +96,7 @@ boil.oBedroom.prototype = {
             bed:{
                 dialog: [
                     'Sometimes when you lie down you feel like you’re on a cloud in the sky and there are butterflies and angels everywhere',
+                    'You’re craving for more mushrooms..'
                 ],
                 sprite: null
             }, 

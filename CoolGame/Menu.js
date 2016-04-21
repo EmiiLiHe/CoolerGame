@@ -14,7 +14,7 @@ boil.Menu.prototype = {
         menu.animations.play('load', 7, true);
         menu.scale.setTo (2,2);
         game.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.add(function(){
-            game.state.start('bathroom');
+            game.state.start('bedroom');
         });
          
     },
@@ -66,7 +66,8 @@ function changeText(){
             words = game.add.text(textX+textMargin,textY+textMargin,text[ikea].dialog[wordIndex],style);
             
             if(text[ikea].sprite !== null){
-                talksprite = game.add.sprite(0,500,text[ikea].sprite);
+                talksprite = game.add.sprite(875,1150,text[ikea].sprite);
+                talksprite.scale.setTo(0.8,0.8);
                 talksprite.animations.add('talk', [0,1,2,3,4,5,6,7]);
                 talksprite.animations.play('talk',5,true);
             }
