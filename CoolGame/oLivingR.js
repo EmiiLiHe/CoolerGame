@@ -11,17 +11,13 @@ boil.oLivingR.prototype = {
         game.load.image('livingRTileset', 'Assets/Backgrounds/livingRTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         game.load.spritesheet('sammy','Assets/Spritesheets/Sammy.png',1400,940);
-<<<<<<< HEAD
         game.load.spritesheet('talksammy','Assets/Spritesheets/talksammy.png',450,450);
         
         game.load.image('topLayer','Assets/Backgrounds/LivingRtop.png',1400,2100);
         game.load.image('wall','Assets/Backgrounds/wall.png',1400,2100);
-
-=======
         
         game.load.audio('pop', 'assets/Sounds/ohwow.ogg');
          
->>>>>>> origin/master
     },
     create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
