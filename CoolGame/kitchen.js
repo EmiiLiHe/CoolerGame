@@ -11,6 +11,7 @@ boil.kitchen.prototype = {
         game.load.image('kitchenTileset', 'Assets/Backgrounds/kitchenTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         game.load.image('counters','Assets/Backgrounds/counters.png',1500,1500);
+        game.load.audio('kitch', 'assets/Sounds/kitch.ogg');
         
          
     },
@@ -136,6 +137,8 @@ boil.kitchen.prototype = {
                 sprite: null
             },            
         };
+      kitch = game.add.audio('kitch');
+        kitch.play();
 },
 update: function(){
  if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
@@ -183,6 +186,7 @@ update: function(){
         })
     
      if (ptag.x<20){
+         kitch.stop();
      changeState('hallway');
      };
     

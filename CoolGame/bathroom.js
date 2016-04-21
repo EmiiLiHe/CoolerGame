@@ -1,6 +1,6 @@
 boil.bathroom = function(){};
 
-var ptag, bathroom, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text,pop;
+var ptag, bathroom, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text,myth;
 //ikea is whether or not you're near furniture
 boil.bathroom.prototype = {
     preload: function(){
@@ -10,7 +10,7 @@ boil.bathroom.prototype = {
         game.load.tilemap('bathroomTilemap', 'Assets/Backgrounds/bathroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('bathroomTileset', 'Assets/Backgrounds/bathroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
-        game.load.audio('pop', 'assets/Sounds/myth.ogg');
+        game.load.audio('myth', 'assets/Sounds/myth.ogg');
 //        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 1500,470);
 
          
@@ -102,8 +102,8 @@ boil.bathroom.prototype = {
                 sprite: null
             }, 
         };
-        pop = game.add.audio('pop');
-        pop.play();
+        myth = game.add.audio('myth');
+        myth.play();
     },
     
     update: function(){
@@ -154,7 +154,7 @@ boil.bathroom.prototype = {
     
 
          if (ptag.x< 15){
-             pop.stop();
+             myth.stop();
             changeState('hallway');  
          };
         if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&

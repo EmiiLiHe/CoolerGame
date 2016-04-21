@@ -1,6 +1,6 @@
 boil.livingR = function(){};
 
-var ptag, livingR, sammy, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text, pop, sound;
+var ptag, livingR, sammy, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text, ohwow, sound;
 
 boil.livingR.prototype = {
     preload: function(){
@@ -14,7 +14,7 @@ boil.livingR.prototype = {
         game.load.image('topLayer','Assets/Backgrounds/LivingRtop.png',1400,2100);
         game.load.image('wall','Assets/Backgrounds/wall.png',1400,2100);
          
-        game.load.audio('pop', 'assets/Sounds/ohwow.ogg');
+        game.load.audio('ohwow', 'assets/Sounds/ohwow.ogg');
     },
     
     create: function(){
@@ -120,8 +120,8 @@ boil.livingR.prototype = {
                 sprite: null
             },
         };
-        pop = game.add.audio('pop');
-        pop.play();
+        ohwow = game.add.audio('ohwow');
+        ohwow.play();
         //game.sound.setDecodedCallback(pop, start, this);
         //pop.stop();
     },
@@ -171,7 +171,7 @@ update: function(){
             ikea = self.furnitureType(obj2.index);
         })
      if (ptag.x> 1350){
-         pop.stop();
+         ohwow.stop();
      changeState('hallway');
      };
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&

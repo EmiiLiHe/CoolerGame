@@ -14,6 +14,7 @@ boil.oHallway.prototype = {
         game.load.image('upperwall','Assets/Backgrounds/upperwall.png',3000,1500);
         game.load.image('middlewall','Assets/Backgrounds/middlewall4.png',3000,1500);
         game.load.image('lowerwallr','Assets/Backgrounds/lowerwallr.png',3000,1500);
+        game.load.audio('pop', 'assets/Sounds/0halls.ogg');
          
     },
     create: function(){
@@ -67,6 +68,8 @@ boil.oHallway.prototype = {
         map.setCollisionBetween(342,345,'hallway');
         map.setCollision(357,372,'hallway');
         map.setCollision(387,432,'hallway');
+        pop = game.add.audio('pop');
+        pop.play();
         
         furniture = {
             plant: [
@@ -133,17 +136,21 @@ update: function(){
     
     if (ptag.x > 1475) {
         if (ptag.y<900){
+            pop.stop();
             changeState('oKitchen');
         }
         if (ptag.y>1810){
+            pop.stop();
             changeState('oBathroom');
         }
     }
     
     if (ptag.x<20 && ptag.y<1189){
+        pop.stop();
         changeState('oBedroom');
     }
     if (ptag.x<20 && ptag.y>1695){
+        pop.stop();
         changeState('oLivingR')
     };
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&

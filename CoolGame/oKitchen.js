@@ -1,6 +1,6 @@
 boil.oKitchen = function(){};
 
-var ptag, oKitchen,counters, x, y, flip, map, furniture, textbox,ikea, lastKeyPressed, text;
+var ptag, oKitchen,counters, x, y, flip, map, furniture, textbox,ikea, lastKeyPressed, text,kitch;
 
 boil.oKitchen.prototype = {
     preload: function(){
@@ -13,6 +13,7 @@ boil.oKitchen.prototype = {
         game.load.image('counters','Assets/Backgrounds/counters.png',1500,1500);
         game.load.spritesheet('talkfridge','Assets/Spritesheets/talkfridge.png',450,450);
         game.load.spritesheet('talkjegg','Assets/Spritesheets/talkjegg.png',450,450);
+        game.load.audio('kitch', 'assets/Sounds/kitch.ogg');
     },
   create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -152,6 +153,8 @@ boil.oKitchen.prototype = {
                 sprite: 'talkjegg'
             },            
         };
+      kitch = game.add.audio('kitch');
+        kitch.play();
 },
 update: function(){
         if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
@@ -199,6 +202,7 @@ update: function(){
         })
     
      if (ptag.x<20){
+         kitch.stop();
      changeState('oHallway');
      };
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
