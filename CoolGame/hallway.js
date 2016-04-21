@@ -43,25 +43,21 @@ boil.hallway.prototype = {
    
         map.setCollisionBetween(1,15,'hallway');
         map.setCollisionBetween(22,24,'hallway');
-        
-        map.setCollisionBetween(1,4,'hallway');
-        map.setCollisionBetween(16,19,'hallway');
-        map.setCollisionBetween(31,34,'hallway');
-        map.setCollisionBetween(46,49,'hallway');
-        map.setCollisionBetween(61,64,'hallway');
-        map.setCollisionBetween(76,79,'hallway');
-        map.setCollisionBetween(91,94,'hallway');
-        map.setCollisionBetween(106,109,'hallway');
+        map.setCollision(20,35,'hallway'),
+        map.setCollision(50,65,'hallway'),
+        map.setCollision(76,80,'hallway'),
+        map.setCollision(95,'hallway'),
+        map.setCollisionBetween(106,110,'hallway');
        
-        map.setCollisionBetween(211,214,'hallway');
-        map.setCollisionBetween(316,319,'hallway');
+        map.setCollisionBetween(211,215,'hallway');
+        map.setCollisionBetween(316,320,'hallway');
         map.setCollisionBetween(436,450,'hallway');
-        map.setCollision(334,349,'hallway');
-        map.setCollision(364,379,'hallway');
-        map.setCollision(394,409,'hallway');
+        map.setCollision(335,350,'hallway');
+        map.setCollision(365,380,'hallway');
+        map.setCollision(395,410,'hallway');
         
         map.setCollision(12,27,'hallway');//right side
-        map.setCollision(42,'hallway');
+        map.setCollision(42,57, 'hallway');
         map.setCollisionBetween(87,90,'hallway');
         
         map.setCollisionBetween(177,180,'hallway');
@@ -72,8 +68,24 @@ boil.hallway.prototype = {
         map.setCollision(357,372,'hallway');
         map.setCollision(387,432,'hallway');
         
+        furniture = {
+            plant: [
+                [22,24]
+            ]
+        };
+   this.setupFurniture()
+        text = {
+            plant: {
+                dialog: [
+                    'the plants are fake.',
+                    'And you got the painting for $3.50 at a garage sale.'
+                ],
+                sprite: null    
+            },
+        
+        };
 },
-update: function(){
+ update: function(){
                 if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
             ptag.body.velocity.x=300;
             if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
@@ -113,7 +125,7 @@ update: function(){
         }
             
         var self = this;
-        game.physics.arcade.collide(ptag, bedroom, function(obj1, obj2) { 
+        game.physics.arcade.collide(ptag, hallway, function(obj1, obj2) { 
             console.log('collided', self.furnitureType(obj2.index));
             ikea = self.furnitureType(obj2.index);
         }

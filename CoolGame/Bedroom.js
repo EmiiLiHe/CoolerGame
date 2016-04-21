@@ -72,19 +72,19 @@ boil.bedroom.prototype = {
                  dialog: [
                      'you bought it for the novelty and have considered burning it for the heat',
                 ],
-                 sprite: 'null'
+                 sprite: null
              },
             dresser: {
                 dialog: [
                     'just clothes',
                 ],
-                sprite: 'null'     //'talkfrige'
+                sprite: null     //'talkfrige'
             },
             plant:{
                 dialog: [
                     'sometimes you look out your window, and see kids trying to throw rocks at your face.',
                          ],
-                sprite: 'null'
+                sprite: null
             },
             bed:{
                 dialog: [
@@ -94,7 +94,7 @@ boil.bedroom.prototype = {
                     'You want to repress that memory',
                     'You notice something at the foot of the bed.'
                 ],
-                sprite: 'null'
+                sprite: null
             }, 
             wedge: {
                 dialog: [

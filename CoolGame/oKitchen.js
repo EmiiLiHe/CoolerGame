@@ -88,13 +88,13 @@ boil.oKitchen.prototype = {
                      'Sometimes you lay here and cover yourself with salt',
                      'You try to make a snow angel, but never succeed'
                 ],
-                 sprite: 'null'
+                 sprite: null
              },
             chair: {
                 dialog: [
                     'You still don’t have any friends.',
                 ],
-                sprite: 'null'
+                sprite: null
             },
             spice:{
                 dialog: [
@@ -130,14 +130,14 @@ boil.oKitchen.prototype = {
                     'But you’re very thirsty.',
                     'You drink the water.'
                 ],
-                sprite: 'null'
+                sprite: null
             },
             stove: {
                 dialog: [
                     'The fire is captivating',
                     'You want to touch it'
                 ],
-                sprite: 'null'
+                sprite: null
             },
             counter: {
                 dialog: [

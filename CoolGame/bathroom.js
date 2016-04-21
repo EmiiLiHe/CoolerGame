@@ -71,26 +71,26 @@ boil.bathroom.prototype = {
         text = {
             toilet: {
                 dialog: [
-                    'you flushed your late pet turtle down this toilet last month.',
+                    'You flushed your late pet turtle down this toilet last month.',
                     'It clogged the toilet and you couldn’t get enough money to pay for a plumber.'
                 ],
-                sprite: 'null'     //'talkfrige'
+                sprite: null     //'talkfrige'
             },
             mildew:{
                     dialog: [
-                    'the only living (?) thing in this room.',
+                    'The only living (?) thing in this room.',
                     'Your soul died a long time ago'
                 ],
-                 sprite: 'null'
+                 sprite: null
             },
             sink:{
                 dialog: [
                     'God, you hate how you look.',
                     'That stupid red hair and those beady eyes.',
-                    'disgusting.'
+                    'Disgusting.'
                     
                          ],
-                sprite: 'null'
+                sprite: null
             },
             bath:{
                 dialog: [
@@ -98,7 +98,7 @@ boil.bathroom.prototype = {
                     'The pipes are connected to your toilet.',
                     'Which clogged.'
                 ],
-                sprite: 'null'
+                sprite: null
             }, 
         };
     },

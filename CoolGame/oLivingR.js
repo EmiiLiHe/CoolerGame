@@ -82,13 +82,13 @@ boil.oLivingR.prototype = {
                 dialog: [
                     'a collection of books you got from your mom, two pictures of you and your parents, and an old track and field trophy.',
                 ],
-                sprite: 'null'     //'talkfrige'
+                sprite: null     //'talkfrige'
             },
             sammy:{
                 dialog: [
                     'His name is Sammy. All he does is blow bubbles and swim.',                
                          ],
-                sprite: 'null'
+                sprite: null
             },
             TV:{
                 dialog: [
@@ -96,21 +96,21 @@ boil.oLivingR.prototype = {
                     'The pipes are connected to your toilet.',
                     'Which clogged.'
                 ],
-                sprite: 'null'
+                sprite: null
             },
             table: {
                 dialog: [
                     'you are actually extremely allergic to the pollen of this plant in particular.',
                     'Hence the tissues.'
                 ],
-                sprite: 'null' 
+                sprite: null 
             },
             couch: {
                  dialog: [
                      'The couch is only for show.',
                      'It’s actually extremely uncomfortable to sit on'
                  ],
-                sprite: 'null'
+                sprite: null
    },
         };
     },
@@ -154,7 +154,7 @@ update: function(){
         }
             
         var self = this;
-        game.physics.arcade.collide(ptag, bedroom, function(obj1, obj2) { 
+        game.physics.arcade.collide(ptag, oLivingR, function(obj1, obj2) { 
             console.log('collided', self.furnitureType(obj2.index));
             ikea = self.furnitureType(obj2.index);
         })

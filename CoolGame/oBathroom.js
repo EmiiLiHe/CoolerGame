@@ -12,6 +12,7 @@ boil.oBathroom.prototype = {
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
 //        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 1500,470);
         game.load.spritesheet('talkfridge','Assets/Spritesheets/talkfridge.png',450,450);
+        game.load.spritesheet('mildew','Assets/Spritesheets/mildew.png',450,450);
          
     },
     create: function(){
@@ -50,7 +51,10 @@ boil.oBathroom.prototype = {
         
         furniture = {
             toilet: [
-                [49, 50]
+                [49]
+            ],
+            mushrooms:[
+                [50]
             ],
             mildew: [
                 [36,36]
@@ -75,15 +79,31 @@ boil.oBathroom.prototype = {
                     'it’s your regurgitation from last night’s party...',
                     '...that no one came to.'
                 ],
-                sprite: 'null'     //'talkfrige'
+                sprite: null
             },
-            mildew:{
-                    dialog: [
-                    'you love this mildew.',
-                    'He’s a really fun-guy', //cue "bdum tsh" followed by laughter
-                    'good one!' 
+            mushrooms: {
+                dialog: [
+                    'You reach behind the toilet and feel some wet, slimy mushrooms.',
+                    'You pull them out.',
+                    'They’re filthy, but at this point you don’t care. You’ve been craving for more ever since you left the bedroom.',
+                    'You scarf it down greedily.'
                 ],
-                 sprite: 'null'
+                sprite: null
+            }
+            mildew:{
+                dialog: [
+                    ' ‘you love this mildew.’ ',
+                    '‘He’s a really fun-guy’', //cue "bdum tsh" followed by laughter
+                    'Good one!',
+                    'What’s that? You need me to tell you where you can find some mushrooms?',
+                    'Will do!...',
+                    '...Mildew!',
+                    'If I were you, I’d check behind the toilet, though theres poo.',
+                    'Ever since it clogged, the tiles have been so damp that mushrooms grew!',
+                    'It’s not much, but for you, that’ll do!'
+                    
+                ],
+                 sprite: 'mildew'
             },
             sink:{
                 dialog: [
@@ -92,13 +112,13 @@ boil.oBathroom.prototype = {
                     'Just kidding!',
                     'not.'  
                          ],
-                sprite: 'null'
+                sprite: null
             },
             bath:{
                 dialog: [
                     'once you went in here and you found the lost city of Atlantis.'
                 ],
-                sprite: 'null'
+                sprite: null
             }, 
         };
     },

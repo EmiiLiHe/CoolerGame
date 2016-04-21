@@ -31,6 +31,8 @@ boil.oBedroom.prototype = {
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
         ptag.animations.add('walkup',[8,9,10,11,]);
         
+     
+        
         game.physics.enable(ptag);
         ptag.scale.setTo(.45,.45);
         ptag.anchor.setTo(0.5);
@@ -75,25 +77,25 @@ boil.oBedroom.prototype = {
                      'You stare at the desk for 42 seconds.',
                      'You’re getting desperate for heat.'
                 ],
-                 sprite: 'null'
+                 sprite: null
              },
             dresser: {
                 dialog: [
                     'When you don’t come in here to cry, you sometimes see a field of mushrooms and prance among them',
                 ],
-                sprite: 'null'     //'talkfrige'
+                sprite: null     //'talkfrige'
             },
             plant:{
                 dialog: [
-                    'This flower is your best friend.',
-                         ],
-                sprite: 'null'
+                    'This flower is your best friend.'
+                ],
+                sprite: null
             },
             bed:{
                 dialog: [
                     'Sometimes when you lie down you feel like you’re on a cloud in the sky and there are butterflies and angels everywhere',
                 ],
-                sprite: 'null'
+                sprite: null
             }, 
             
         };
@@ -101,7 +103,7 @@ boil.oBedroom.prototype = {
 update: function(){
         if(ptag.angle>0){
             ptag.angle--
-            ptag.x-=2
+            ptag.x--
         }
         else {
             hasAwoken=true 

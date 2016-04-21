@@ -11,6 +11,7 @@ boil.livingR.prototype = {
         game.load.image('livingRTileset', 'Assets/Backgrounds/livingRTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         game.load.spritesheet('sammy','Assets/Spritesheets/Sammy.png',1400,940);
+        game.load.image('topLayer','Assets/Backgrounds/LivingRtop.png',1400,2100);
          
         game.load.audio('pop', 'assets/Sounds/In_Albany_New_York.mp3');
     },
@@ -30,7 +31,7 @@ boil.livingR.prototype = {
         sammy.animations.add('move',[0,1]);
         sammy.animations.play('move', 2, true);
         ptag = game.add.sprite(1295,555, 'ptag');
-        
+        game.add.sprite(0,0,'topLayer');
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
         ptag.animations.add('walkup',[8,9,10,11,]);
         
@@ -85,35 +86,34 @@ boil.livingR.prototype = {
                 dialog: [
                     'a collection of books you got from your mom, two pictures of you and your parents, and an old track and field trophy.',
                 ],
-                sprite: 'null'     //'talkfrige'
+                sprite: null     //'talkfrige'
             },
             sammy:{
                 dialog: [
                     'His name is Sammy. All he does is blow bubbles and swim.',                
                          ],
-                sprite: 'null'
+                sprite: null
             },
             TV:{
                 dialog: [
-                    'your bathtub doesn’t work.',
-                    'The pipes are connected to your toilet.',
-                    'Which clogged.'
+                    'You spilled juice on it like 3 years ago and it shorted out, electrocuting you.',
+                    'It’s still a little sticky.'
                 ],
-                sprite: 'null'
+                sprite: null
             },
             table: {
                 dialog: [
                     'you are actually extremely allergic to the pollen of this plant in particular.',
                     'Hence the tissues.'
                 ],
-                sprite: 'null' 
+                sprite: null 
             },
             couch: {
                  dialog: [
                      'The couch is only for show.',
                      'It’s actually extremely uncomfortable to sit on'
                  ],
-                sprite: 'null'
+                sprite: null
    },
         };
         pop = game.add.audio('pop');

@@ -45,13 +45,13 @@ boil.oHallway.prototype = {
         map.setCollisionBetween(22,24,'hallway');
         
         map.setCollisionBetween(1,4,'hallway');
-        map.setCollisionBetween(16,19,'hallway');
-        map.setCollisionBetween(31,34,'hallway');
-        map.setCollisionBetween(46,49,'hallway');
-        map.setCollisionBetween(61,64,'hallway');
-        map.setCollisionBetween(76,79,'hallway');
-        map.setCollisionBetween(91,94,'hallway');
-        map.setCollisionBetween(106,109,'hallway');
+        map.setCollisionBetween(16,20,'hallway');
+        map.setCollisionBetween(31,35,'hallway');
+        map.setCollisionBetween(46,50,'hallway');
+        map.setCollisionBetween(61,65,'hallway');
+        map.setCollisionBetween(76,80,'hallway');
+        map.setCollisionBetween(91,95,'hallway');
+        map.setCollisionBetween(106,110,'hallway');
        
         map.setCollisionBetween(211,214,'hallway');
         map.setCollisionBetween(316,319,'hallway');
