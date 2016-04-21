@@ -3,7 +3,7 @@ var menu, ikea = null;
 
 boil.Menu.prototype = {
     preload: function(){
-        game.load.spritesheet('menu', 'Assets/Spritesheets/menuscreen.png',600,600);
+        game.load.spritesheet('menu', 'Assets/Spritesheets/amenuscreen.png',600,600);
         game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 1500,470);
     },
     create: function(){
@@ -11,7 +11,7 @@ boil.Menu.prototype = {
         //game.stage.backgroundColor = '#000000';
         var menu = game.add.sprite(150,150, 'menu');
         var load = menu.animations.add('load');
-        menu.animations.play('load', 7, true);
+        menu.animations.play('load', 6, true);
         menu.scale.setTo (2,2);
         game.input.keyboard.addKey(Phaser.Keyboard.ENTER).onDown.add(function(){
             game.state.start('bathroom');
