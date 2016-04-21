@@ -10,7 +10,8 @@ boil.bedroom.prototype = {
         game.load.tilemap('bedroomTilemap', 'Assets/Backgrounds/bedroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('bedroomTileset', 'Assets/Backgrounds/bedroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
-        game.load.spritesheet('shrooms','Assets/Spritesheets/shrooms.png',450,450);         
+        game.load.spritesheet('shrooms','Assets/Spritesheets/shrooms.png',450,450);  
+        //game.load.audio('pop', 'assets/Sounds/bedroom.ogg');
     },
     create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -64,6 +65,8 @@ boil.bedroom.prototype = {
                 [110,110]
             ]
         };
+        //pop = game.add.audio('pop');
+        //pop.play();
         
         this.setupFurniture();
 
@@ -103,11 +106,15 @@ boil.bedroom.prototype = {
                     'You eat the mushrooms'
                 ],
                 sprite: 'shrooms',
+                //end: 'pop',
                 stateChange: 'oBedroom'
+                
+                
                 
             }
             
         };
+        
 },
 update: function(){
         if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
@@ -155,6 +162,7 @@ update: function(){
         })
     
      if (ptag.x>1500){
+         //pop.stop();
      changeState('hallway');
      };
 

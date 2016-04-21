@@ -14,7 +14,7 @@ boil.livingR.prototype = {
         game.load.image('topLayer','Assets/Backgrounds/LivingRtop.png',1400,2100);
         game.load.image('wall','Assets/Backgrounds/wall.png',1400,2100);
          
-        game.load.audio('pop', 'assets/Sounds/In_Albany_New_York.mp3');
+        game.load.audio('pop', 'assets/Sounds/ohwow.ogg');
     },
     
     create: function(){

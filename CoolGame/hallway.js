@@ -1,6 +1,6 @@
 boil.hallway = function(){};
 
-var ptag, hallway, x, y, flip, map, furniture, textbox,ikea, lastKeyPressed,text;
+var ptag, hallway, x, y, flip, map, furniture, textbox,ikea, lastKeyPressed,text,pop;
 
 boil.hallway.prototype = {
     init: function(){
@@ -14,6 +14,7 @@ boil.hallway.prototype = {
         game.load.image('upperwall','Assets/Backgrounds/upperwall.png',3000,1500);
         game.load.image('middlewall','Assets/Backgrounds/middlewall4.png',3000,1500);
         game.load.image('lowerwallr','Assets/Backgrounds/lowerwallr.png',3000,1500);
+        game.load.audio('pop', 'assets/Sounds/In_Albany_New_York.ogg');
          
     },
     create: function(){
@@ -84,6 +85,8 @@ boil.hallway.prototype = {
             },
         
         };
+        pop = game.add.audio('pop');
+        pop.play();
 },
  update: function(){
                 if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
@@ -133,17 +136,21 @@ boil.hallway.prototype = {
     
     if (ptag.x > 1475) {
         if (ptag.y<900){
+            pop.stop();
             changeState('kitchen');
         }
         if (ptag.y>1810){
+            pop.stop();
             changeState('bathroom');
         }
     }
     
     if (ptag.x<20 && ptag.y<1189){
+        pop.stop();
         changeState('bedroom');
     }
     if (ptag.x<20 && ptag.y>1695){
+        pop.stop();
         changeState('livingR')
     };
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&

@@ -1,6 +1,6 @@
 boil.oBedroom = function(){};
 
-var ptag, oBedroom, x, y, flip, map, furniture, textbox,ikea,text, lastKeyPressed, hasAwoken=false;
+var ptag, oBedroom, x, y, flip, map, furniture, textbox,ikea,text, lastKeyPressed,pop, hasAwoken=false;
 
 boil.oBedroom.prototype = {
     preload: function(){
@@ -10,6 +10,7 @@ boil.oBedroom.prototype = {
         game.load.tilemap('bedroomTilemap', 'Assets/Backgrounds/bedroomTilemap.json', null,Phaser.Tilemap.TILED_JSON);
         game.load.image('bedroomTileset', 'Assets/Backgrounds/bedroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
+        //game.load.audio('pop', 'assets/Sounds/bedroom.ogg');
 //        game.load.spritesheet('textbox', 'Assets/Spritesheets/textbox.png', 147,47);
          
     },
@@ -102,6 +103,8 @@ boil.oBedroom.prototype = {
             }, 
             
         };
+        //pop = game.add.audio('pop');
+        //pop.play();
 },
 update: function(){
         if(ptag.angle>0){
@@ -155,6 +158,7 @@ update: function(){
         })
     
      if (ptag.x>1500){
+         //pop.stop();
      changeState('oHallway');
      };
      if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
