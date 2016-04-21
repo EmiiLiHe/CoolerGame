@@ -13,7 +13,7 @@ boil.livingR.prototype = {
         game.load.spritesheet('sammy','Assets/Spritesheets/Sammy.png',1400,940);
         game.load.image('topLayer','Assets/Backgrounds/LivingRtop.png',1400,2100);
          
-        game.load.audio('pop', 'assets/Sounds/In_Albany_New_York.mp3');
+        game.load.audio('pop', 'assets/Sounds/Trialanderror.ogg');
     },
     
     create: function(){
