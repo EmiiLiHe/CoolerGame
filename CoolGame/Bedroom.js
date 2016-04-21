@@ -11,7 +11,7 @@ boil.bedroom.prototype = {
         game.load.image('bedroomTileset', 'Assets/Backgrounds/bedroomTileset.png');
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         game.load.spritesheet('shrooms','Assets/Spritesheets/shrooms.png',450,450);  
-        game.load.audio('pop', 'assets/Sounds/bedroom.ogg');
+        //game.load.audio('pop', 'assets/Sounds/bedroom.ogg');
     },
     create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);

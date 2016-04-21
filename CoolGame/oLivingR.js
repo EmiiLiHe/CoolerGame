@@ -12,7 +12,7 @@ boil.oLivingR.prototype = {
         game.load.spritesheet('ptag', 'Assets/Spritesheets/ptag.png',450,940);
         game.load.spritesheet('sammy','Assets/Spritesheets/Sammy.png',1400,940);
         
-        game.load.audio('pop', 'assets/Sounds/Trialanderror.ogg');
+        game.load.audio('pop', 'assets/Sounds/ohwow.ogg');
          
     },
     create: function(){
