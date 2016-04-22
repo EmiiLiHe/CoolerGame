@@ -14,7 +14,7 @@ boil.oHallway.prototype = {
         game.load.image('upperwall','Assets/Backgrounds/upperwall.png',3000,1500);
         game.load.image('middlewall','Assets/Backgrounds/middlewall4.png',3000,1500);
         game.load.image('lowerwallr','Assets/Backgrounds/lowerwallr.png',3000,1500);
-        game.load.audio('pop', 'assets/Sounds/0halls.ogg');
+        game.load.audio('pop', 'assets/Sounds/ohalls.ogg');
          
     },
     create: function(){

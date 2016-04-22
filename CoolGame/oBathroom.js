@@ -1,6 +1,6 @@
 boil.oBathroom = function(){};
 
-var ptag, oBathroom, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text;
+var ptag, oBathroom, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text,bath;
 //ikea is whether or not you're near furniture
 boil.oBathroom.prototype = {
     preload: function(){
@@ -14,6 +14,7 @@ boil.oBathroom.prototype = {
         game.load.spritesheet('talkfridge','Assets/Spritesheets/talkfridge.png',450,450);
         game.load.spritesheet('mildew','Assets/Spritesheets/mildew.png',450,450);
         game.load.spritesheet('tshrooms','Assets/Spritesheets/tshrooms.png',450,450);
+        game.load.audio('bath', 'assets/Sounds/bath.ogg');
     },
     create: function(){
         var enter = this.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -122,6 +123,8 @@ boil.oBathroom.prototype = {
                 sprite: null
             }, 
         };
+        bath = game.add.audio('bath');
+        bath.play();
     },
     
     update: function(){
@@ -171,6 +174,7 @@ boil.oBathroom.prototype = {
     
 
          if (ptag.x< 15){
+             bath.stop();
             changeState('oHallway');  
          };
         if (!game.input.keyboard.isDown(Phaser.Keyboard.UP) &&
