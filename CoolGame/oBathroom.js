@@ -90,7 +90,7 @@ boil.oBathroom.prototype = {
                     'You scarf it down greedily.'
                 ],
                 sprite: 'tshrooms',
-                stateChange: 'GameOver'
+                stateChange: 'mBathroom'
             },
             mildew:{
                 dialog: [
