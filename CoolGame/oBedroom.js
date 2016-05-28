@@ -1,6 +1,6 @@
 boil.oBedroom = function(){};
 
-var ptag, oBedroom, x, y, flip, map, furniture, textbox,ikea,text, lastKeyPressed,pop, hasAwoken=false;
+var ptag, oBedroom, x, y, flip, map, furniture, textbox,ikea,text, lastKeyPressed, pop, hasAwoken=false;
 
 boil.oBedroom.prototype = {
     preload: function(){

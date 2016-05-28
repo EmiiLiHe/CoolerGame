@@ -1,6 +1,6 @@
 boil.mBathroom = function(){};
 
-var ptag, mBathroom, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text,myth;
+var ptag, mBathroom, x, y, flip, map, furniture, textbox, ikea, lastKeyPressed,text,myth, hasAwoken=false;
 //ikea is whether or not you're near furniture
 boil.mBathroom.prototype = {
     preload: function(){
@@ -28,12 +28,20 @@ boil.mBathroom.prototype = {
         mBathroom = map.createLayer('mBathroom');
         ptag = game.add.sprite(game.world.centerX-650, 1065, 'ptag');
         
+        if(!hasAwoken){
+            ptag = game.add.sprite(856,870, 'ptag');
+        }
+        else ptag = game.add.sprite(1419,1188, 'ptag')
+        
         ptag.animations.add('walk',[0,1,2,3,4,5,6,7,]);
         ptag.animations.add('walkup',[8,9,10,11,]);
         
         game.physics.enable(ptag);
         ptag.scale.setTo(-.45,.45);
         ptag.anchor.setTo(0.5);
+        if(!hasAwoken){
+            ptag.angle = 90 
+        }
 
         map.setCollisionBetween(1,30,'mBathroom'); //ceiling
         map.setCollisionBetween(196,225,'mBathroom') //bottom
@@ -107,7 +115,13 @@ boil.mBathroom.prototype = {
     },
     
     update: function(){
-        if(!textbox){
+            if(ptag.angle>0){
+                ptag.angle--
+                ptag.x--
+              }
+            else {
+                hasAwoken=true 
+            if(!textbox){
             if(game.input.keyboard.isDown(Phaser.Keyboard.RIGHT)){
                 ptag.body.velocity.x=300;
                 if (!game.input.keyboard.isDown(Phaser.Keyboard.UP)) {
